@@ -1,6 +1,5 @@
 <?php
 include_once('../../config.php');
-// header("location:../login");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +12,7 @@ include_once('../../config.php');
         <div class="row">
             <?php
             include_once(DIR_LAYOUT . 'sidebar.php');
-            include_once(DIR_VIEW . '/dashboard/dashboard.php');
+            include_once('./content.php');
             ?>
         </div>
     </div>
