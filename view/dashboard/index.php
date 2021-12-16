@@ -4,7 +4,9 @@ include_once('../../config.php');
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include_once(DIR_LAYOUT . 'head.php'); ?>
+<head>
+    <?php include_once(DIR_LAYOUT . 'head.php'); ?>
+</head>
 
 <body>
     <?php include_once(DIR_LAYOUT . 'navbar.php'); ?>
@@ -16,8 +18,8 @@ include_once('../../config.php');
             ?>
         </div>
     </div>
-    <?php include_once(DIR_LAYOUT . '/footer.php'); ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <?php include_once(DIR_LAYOUT . 'footer.php'); ?>
+    <?php include_once(DIR_SYSTEM . 'globaljs.php'); ?>
 </body>
 
 </html>

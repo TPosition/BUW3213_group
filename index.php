@@ -1,2 +1,2 @@
 <?php
-header("location:view/dashboard");
+header("location:view/home");
