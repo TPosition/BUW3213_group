@@ -6,7 +6,7 @@ include_once('../../config.php');
 
 <head>
     <?php include_once(DIR_LAYOUT . 'head.php'); ?>
-    <title>Login | Genibenix</title>
+    <title>Register | Genibenix</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/login_register.css">
 </head>
@@ -21,7 +21,7 @@ include_once('../../config.php');
                     </div>
                     <div class="card fat">
                         <div class="card-body">
-                            <h4 class="card-title">Login</h4>
+                            <h4 class="card-title">Register</h4>
                             <form method="POST" class="my-login-validation">
                                 <div class="form-group">
                                     <label for="email">Username</label>
@@ -30,12 +30,23 @@ include_once('../../config.php');
                                         Username is invalid
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input id="email" type="email" class="form-control" name="use" value="" required autofocus>
+                                    <div class="invalid-feedback">
+                                        Email is invalid
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input id="phone" type="phone" class="form-control" name="use" value="" required autofocus>
+                                    <div class="invalid-feedback">
+                                        Phone number is invalid
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="password">Password
-                                        <a href="forgot.html" class="float-right">
-                                            Forgot Password?
-                                        </a>
                                     </label>
                                     <input id="password" type="password" class="form-control" name="password" required data-eye>
                                     <div class="invalid-feedback">
@@ -52,11 +63,11 @@ include_once('../../config.php');
 
                                 <div class="form-group m-0">
                                     <button type="submit" class="btn btn-primary btn-block">
-                                        Login
+                                        Resgiter
                                     </button>
                                 </div>
                                 <div class="mt-4 text-center">
-                                    Don't have an account? <a href="../register/index.php"> Register!</a>
+                                    Have an account? <a href="../login/index.php"> Login!</a>
                                 </div>
                             </form>
                         </div>
