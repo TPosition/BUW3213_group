@@ -7,7 +7,7 @@ include_once('../../config.php');
 <head>
     <!-- Import meta -->
     <?php include_once(DIR_LAYOUT . 'head.php'); ?>
-    <title>Login | Genibenix</title>
+    <title>Home | Genibenix</title>
 </head>
 
 <body>
