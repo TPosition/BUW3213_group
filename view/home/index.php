@@ -84,16 +84,17 @@ include_once('../../config.php');
     </div>
 
     <div class="bg-light text-center p-5 mt-5">
-        <h1>Service is our mission</h1>
-        <blockquote class="blockquote text-center p-5">
-            <p class="px-5">“There is a spiritual aspect to our lives — when we give, we receive —
-                when a business does something good for somebody, that somebody feels
-                good about them!”</p>
-            <footer class="blockquote-footer">Ben Cohen, <cite title="Source Title">Co-Founder Ben & Jerry’s</cite></footer>
-        </blockquote>
-
+        <div class="container">
+            <h1>Service is our mission</h1>
+            <blockquote class="blockquote text-center">
+                <p>“There is a spiritual aspect to our lives — when we give, we receive —
+                    when a business does something good for somebody, that somebody feels
+                    good about them!”</p>
+                <footer class="blockquote-footer">Ben Cohen, <cite title="Source Title">Co-Founder Ben & Jerry’s</cite></footer>
+            </blockquote>
+        </div>
     </div>
-  
+
     <!-- Import Footer -->
     <?php include_once(DIR_LAYOUT . 'footer.php'); ?>
     <?php include_once(DIR_SYSTEM . 'globaljs.php'); ?>
