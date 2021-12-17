@@ -1,13 +1,14 @@
 <?php
 include_once('../../config.php');
+include_once('../../action/check_login.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<?php include_once(DIR_LAYOUT . 'head.php'); ?>
+    <?php include_once(DIR_LAYOUT . 'head.php'); ?>
     <title>Payment</title>
-    
+
 
 </head>
 
@@ -19,7 +20,7 @@ include_once('../../config.php');
             <?php
             include_once(DIR_LAYOUT . 'sidebar.php');
             include_once('./content.php');
-          
+
             ?>
         </div>
     </div>

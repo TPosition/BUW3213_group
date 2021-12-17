@@ -1,5 +1,9 @@
 <?php
 include_once('../../config.php');
+
+include_once('../../action/validate_login.php');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,25 +26,18 @@ include_once('../../config.php');
                     <div class="card fat">
                         <div class="card-body">
                             <h4 class="card-title">Login</h4>
-                            <form method="POST" class="my-login-validation">
-                                <div class="form-group">
-                                    <label for="email">Username</label>
-                                    <input id="username" type="username" class="form-control" name="use" value="" required autofocus>
-                                    <div class="invalid-feedback">
-                                        Username is invalid
-                                    </div>
+                            <form method="POST" class="my-login-validation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                                    <label for="username">Username</label>
+                                    <input id="username" type="text" class="form-control" name="username" value="<?php echo $username; ?>" required autofocus>
+                                    <span class="help-block"><?php echo $username_err; ?></span>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                                     <label for="password">Password
-                                        <a href="forgot.html" class="float-right">
-                                            Forgot Password?
-                                        </a>
                                     </label>
-                                    <input id="password" type="password" class="form-control" name="password" required data-eye>
-                                    <div class="invalid-feedback">
-                                        Password is required
-                                    </div>
+                                    <input id="password" type="password" class="form-control" name="password" value="<?php echo $password; ?>" required data-eye>
+                                    <span class="help-block"><?php echo $password_err; ?></span>
                                 </div>
 
                                 <div class="form-group">

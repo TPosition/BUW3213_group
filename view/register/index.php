@@ -1,5 +1,9 @@
 <?php
 include_once('../../config.php');
+
+
+include_once('../../action/validate_register.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +13,7 @@ include_once('../../config.php');
     <title>Register | Genibenix</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/login_register.css">
+
 </head>
 
 <body class="my-login-page">
@@ -22,44 +27,37 @@ include_once('../../config.php');
                     <div class="card fat">
                         <div class="card-body">
                             <h4 class="card-title">Register</h4>
-                            <form method="POST" class="my-login-validation">
-                                <div class="form-group">
+                            <form method="POST" class="my-login-validation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                                     <label for="email">Username</label>
-                                    <input id="username" type="username" class="form-control" name="use" value="" required autofocus>
-                                    <div class="invalid-feedback">
-                                        Username is invalid
-                                    </div>
+                                    <input id="username" type="username" class="form-control" name="username" value="<?php echo $username; ?>" required autofocus>
+                                    <span class="help-block"><?php echo $username_err; ?></span>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                                     <label for="email">Email</label>
-                                    <input id="email" type="email" class="form-control" name="use" value="" required autofocus>
-                                    <div class="invalid-feedback">
-                                        Email is invalid
-                                    </div>
+                                    <input id="email" type="email" class="form-control" name="email" value="<?php echo $email; ?>" required>
+                                    <span class="help-block"><?php echo $email_err; ?></span>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
                                     <label for="phone">Phone</label>
-                                    <input id="phone" type="phone" class="form-control" name="use" value="" required autofocus>
-                                    <div class="invalid-feedback">
-                                        Phone number is invalid
-                                    </div>
+                                    <input id="phone" type="number" class="form-control" name="phone" value="<?php echo $phone; ?>" required>
+                                    <span class="help-block"><?php echo $phone_err; ?></span>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                                     <label for="password">Password
                                     </label>
-                                    <input id="password" type="password" class="form-control" name="password" required data-eye>
-                                    <div class="invalid-feedback">
-                                        Password is required
-                                    </div>
+                                    <input id="password" type="password" class="form-control" name="password" value="<?php echo $password; ?>" required data-eye>
+                                    <span class="help-block"><?php echo $password_err; ?></span>
+                                </div>
+                                <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                                    <label for="password">Confirm Password
+                                    </label>
+                                    <input id="confirm_password" type="password" class="form-control" name="confirm_password" value="<?php echo $confirm_password; ?>" required data-eye>
+                                    <span class="help-block"><?php echo $confirm_password_err; ?></span>
                                 </div>
 
-                                <div class="form-group">
-                                    <div class="custom-checkbox custom-control">
-                                        <input type="checkbox" name="remember" id="remember" class="custom-control-input">
-                                        <label for="remember" class="custom-control-label">Remember Me</label>
-                                    </div>
-                                </div>
+
 
                                 <div class="form-group m-0">
                                     <button type="submit" class="btn btn-primary btn-block">

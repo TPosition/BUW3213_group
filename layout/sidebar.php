@@ -54,7 +54,7 @@
             }
             ?>
             <li class="nav-item">
-                <a href="#" class="nav-link text-white">
+                <a href="../../action/logout.php" class="nav-link text-white">
                     <i class="bi bi-box-arrow-right"></i>
                     &nbsp; Logout
                 </a>

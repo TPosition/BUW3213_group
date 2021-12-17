@@ -53,6 +53,10 @@ body.my-login-page {
   text-align: center;
 }
 
+.help-block {
+  color: red;
+}
+
 @media screen and (max-width: 425px) {
   .my-login-page .card-wrapper {
     width: 90%;
