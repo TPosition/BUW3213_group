@@ -5,3 +5,7 @@
 .admin-bg-secondary {
   background-color: #225081;
 }
+
+.sidebar {
+  height: 100vh;
+}
