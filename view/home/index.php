@@ -46,7 +46,7 @@ include_once('../../config.php');
                     <div class="card-body">
                         <h4 class="card-title">Single Room</h4>
                         <p class="card-text">RM 60 per day</p>
-                        <a href="#" class="btn btn-primary">Book Now!</a>
+                        <a href="reservation.php" class="btn btn-primary">Book Now!</a>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@ include_once('../../config.php');
                     <div class="card-body">
                         <h4 class="card-title">Double Room</h4>
                         <p class="card-text">RM 90 per day</p>
-                        <a href="#" class="btn btn-primary">Book Now!</a>
+                        <a href="reservation.php" class="btn btn-primary">Book Now!</a>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@ include_once('../../config.php');
                     <div class="card-body">
                         <h4 class="card-title">Luxury Room</h4>
                         <p class="card-text">RM 130 per day</p>
-                        <a href="#" class="btn btn-primary">Book Now!</a>
+                        <a href="reservation.php" class="btn btn-primary">Book Now!</a>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@ include_once('../../config.php');
                     <div class="card-body">
                         <h4 class="card-title">Deluxe Room</h4>
                         <p class="card-text">RM 180 per day</p>
-                        <a href="#" class="btn btn-primary">Book Now!</a>
+                        <a href="reservation.php" class="btn btn-primary">Book Now!</a>
                     </div>
                 </div>
             </div>
