@@ -13,6 +13,15 @@ include_once('../../config.php');
             background-image: url("../../image/reservation_background.jpg");
             background-repeat: no-repeat;
             background-size: cover;
+            min-height: 100vh;
+        }
+
+        html {
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100%;
         }
     </style>
 </head>
