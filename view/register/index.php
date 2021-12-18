@@ -57,7 +57,7 @@ include_once('../../action/validate_register.php');
                                     <span class="help-block"><?php echo $confirm_password_err; ?></span>
                                 </div>
 
-
+                                <input type="hidden" id="role" name="role" value="user">
 
                                 <div class="form-group m-0">
                                     <button type="submit" class="btn btn-primary btn-block">

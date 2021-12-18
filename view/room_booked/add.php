@@ -1,9 +1,9 @@
-<div class="modal fade" id="editModel" tabindex="-1" role="dialog" aria-labelledby="editModelLabel" aria-hidden="true">
+<div class="modal fade" id="addModel" tabindex="-1" role="dialog" aria-labelledby="addModelLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
 
-                <h4 class="modal-title" id="myModalLabel">Edit Booking</h4>
+                <h4 class="modal-title" id="addModelLabel">Add Booking</h4>
             </div>
             <form method="post">
                 <div class="modal-body">
