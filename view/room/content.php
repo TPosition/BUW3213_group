@@ -7,7 +7,7 @@
 
         <div class="clearfix mb-3">
 
-            <a href="" class="btn btn-primary btn-lg float-end"><i class="bi bi-plus-lg"></i> &nbsp;Add Room</a>
+            <button class="btn btn-primary btn-lg float-end" data-bs-toggle='modal' data-bs-target='#addModel'><i class="bi bi-plus-lg"></i> &nbsp;Add Room</button>
         </div>
 
         <table cellpadding="0" cellspacing="0" class=" table table-striped table-bordered">
@@ -17,7 +17,7 @@
                     <th>No .</th>
                     <th>Room Type</th>
                     <th>Bedding</th>
-
+                    <th>Room Number</th>
                     <th>Action</th>
 
                 </tr>
@@ -31,12 +31,12 @@
                         4.0
                     </td>
                     <td>Win 95+</td>
+                    <td>Win 95+</td>
 
-
-                    <td> <button class='btn btn-success fw-bold' data-bs-toggle='modal' data-bs-target='#mymodel'><i class="bi bi-pencil-square"></i>&nbsp; Edit</button>
+                    <td> <button class='btn btn-success fw-bold' data-bs-toggle='modal' data-bs-target='#editModel'><i class="bi bi-pencil-square"></i>&nbsp; Edit</button>
                         <button class='btn btn-danger fw-bold'><i class="bi bi-trash"></i>&nbsp; Delete</button>
                     </td>
-
+                
                 </tr>
                 <tr class="gradeC">
                     <td>Trident</td>
@@ -71,6 +71,13 @@
                 </tr>
             </tbody>
         </table>
+
+        <?php include_once('add.php'); ?>
     </div>
-    <?php include_once('./edit.php'); ?>
+    <?php include_once('edit.php'); ?>
+
+
 </main>
+
+
+

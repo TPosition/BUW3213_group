@@ -27,6 +27,8 @@ include_once('../../action/check_login.php');
 
     <?php include_once(DIR_LAYOUT . 'footer.php'); ?>
     <?php include_once(DIR_SYSTEM . 'globaljs.php'); ?>
+
+
 </body>
 
 </html>

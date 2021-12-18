@@ -7,7 +7,7 @@
 
     <div class="clearfix mx-5">
 
-        <a href="" class="btn btn-primary btn-lg float-end"><i class="bi bi-plus-lg"></i> &nbsp;Add User</a>
+        <button class="btn btn-primary btn-lg float-end" data-bs-toggle='modal' data-bs-target='#addModel'><i class="bi bi-plus-lg"></i> &nbsp;Add User</button>
     </div>
 
     <div class="row d-flex justify-content-around">
@@ -39,7 +39,7 @@
                             4.0
                         </td>
 
-                        <td> <button class='btn btn-success fw-bold' data-bs-toggle='modal' data-bs-target='#mymodel'><i class="bi bi-pencil-square"></i>&nbsp; Edit</button>
+                        <td> <button class='btn btn-success fw-bold' data-bs-toggle='modal' data-bs-target='#editModel'><i class="bi bi-pencil-square"></i>&nbsp; Edit</button>
                             <button class='btn btn-danger fw-bold'><i class="bi bi-trash"></i>&nbsp; Delete</button>
                         </td>
 
@@ -81,7 +81,7 @@
                             4.0
                         </td>
 
-                        <td> <button class='btn btn-success fw-bold' data-bs-toggle='modal' data-bs-target='#mymodel'><i class="bi bi-pencil-square"></i>&nbsp; Edit</button>
+                        <td> <button class='btn btn-success fw-bold' data-bs-toggle='modal' data-bs-target='#editModel'><i class="bi bi-pencil-square"></i>&nbsp; Edit</button>
                             <button class='btn btn-danger fw-bold'><i class="bi bi-trash"></i>&nbsp; Delete</button>
                         </td>
 
@@ -96,6 +96,8 @@
 
             </table>
         </div>
+        <?php include_once('add.php'); ?>
     </div>
-    <?php include_once('./edit.php'); ?>
+    <?php include_once('edit.php'); ?>
+
 </main>
