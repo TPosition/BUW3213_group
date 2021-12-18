@@ -3,11 +3,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script>
-   $(document).ready(function() {
-    $('.nav-link').click(function() {
-        $('.nav-link.active').removeClass("active");
-        $(this).addClass("active");
-    });
-});
+    "use strict";
 
+    $(document).ready(function() {
+        $('.nav-link').click(function() {
+            $('.nav-link.active').removeClass("active");
+            $(this).addClass("active");
+        });
+    });
 </script>
