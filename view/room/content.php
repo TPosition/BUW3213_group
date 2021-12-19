@@ -10,74 +10,64 @@
             <button class="btn btn-primary btn-lg float-end" data-bs-toggle='modal' data-bs-target='#addModel'><i class="bi bi-plus-lg"></i> &nbsp;Add Room</button>
         </div>
 
-        <table cellpadding="0" cellspacing="0" class=" table table-striped table-bordered">
 
-            <thead>
-                <tr>
-                    <th>No .</th>
-                    <th>Room Type</th>
-                    <th>Bedding</th>
-                    <th>Room Number</th>
-                    <th>Action</th>
+        <?php
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="gradeX">
-                    <td>Trident</td>
-                    <td>
-                        Internet
-                        Explorer
-                        4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td>Win 95+</td>
 
-                    <td> <button class='btn btn-success fw-bold' data-bs-toggle='modal' data-bs-target='#editModel'><i class="bi bi-pencil-square"></i>&nbsp; Edit</button>
-                        <button class='btn btn-danger fw-bold'><i class="bi bi-trash"></i>&nbsp; Delete</button>
-                    </td>
-                
-                </tr>
-                <tr class="gradeC">
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 5.0</td>
-                    <td>Win 95+</td>
-                    <td class="center">5</td>
-                    <td class="center">C</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 5.5</td>
-                    <td>Win 95+</td>
-                    <td class="center">5.5</td>
-                    <td class="center">A</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 6</td>
-                    <td>Win 98+</td>
-                    <td class="center">6</td>
-                    <td class="center">A</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Trident</td>
-                    <td>Internet Explorer 7</td>
-                    <td>Win XP SP2+</td>
-                    <td class="center">7</td>
-                    <td class="center">A</td>
-                </tr>
-            </tbody>
-        </table>
+        // Attempt select query execution
+        $sql = "SELECT * FROM room";
+        if ($result = mysqli_query($link, $sql)) {
+            if (mysqli_num_rows($result) > 0) {
+                echo " <table cellpadding='0' cellspacing='0' class='table table-striped table-bordered'>";
+                echo "<thead>";
+                echo "<tr>";
+                echo "<th>No.</th>";
+                echo "<th>Room Type</th>";
+                echo "<th>Bedding</th>";
+                echo "<th>Name</th>";
+                echo "<th>Status</th>";
+                echo "<th>Action</th>";
+                echo "</tr>";
+                echo "</thead>";
+                echo "<tbody>";
+                while ($row = mysqli_fetch_array($result)) {
+                    $rid =   $row['id'];
+                    $rroom_type = $row['room_type'];
+                    $rbedding = $row['bedding'];
+                    echo "<tr>";
+                    echo "<td>" . $row['id'] . "</td>";
+                    echo "<td>" . $row['room_type'] . "</td>";
+                    echo "<td>" . $row['bedding'] . "</td>";
+                    echo "<td>" . $row['username'] . "</td>";
+                    if ($row['status'] == null) {
+                        echo "<td> Empty </td>";
+                    } else {
+                        echo "<td>" . $row['status'] . "</td>";
+                    }
+                    echo "<td>";
+                    echo " <a class='btn btn-success fw-bold me-3' data-bs-toggle='modal'   data-bs-target='#editModel$rid'><i class='bi bi-pencil-square'></i>&nbsp; Edit</a>";
+                    echo "<a href='../../action/delete.php?id=$rid&table_name=room' class='btn btn-danger fw-bold'><i class='bi bi-trash'></i>&nbsp;Delete </a>";
+                    echo "</td>";
+                    echo "</tr>";
 
-        <?php include_once('add.php'); ?>
+                    echo include('edit.php');
+                }
+                echo "</tbody>";
+                echo "</table>";
+                // Free result set
+                mysqli_free_result($result);
+            } else {
+                echo "<p class='lead'><em>No records were found.</em></p>";
+            }
+        } else {
+            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+        }
+
+        // Close connection
+        mysqli_close($link);
+        ?>
+
     </div>
-    <?php include_once('edit.php'); ?>
-
+    <?php include_once('add.php'); ?>
 
 </main>
-
-
-

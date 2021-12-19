@@ -3,10 +3,6 @@
 		<h1 class="h2">Room Booking</h1>
 	</div>
 
-
-
-
-
 	<div class="row m-5">
 
 		<div class="clearfix mb-3">
@@ -14,80 +10,95 @@
 			<button class="btn btn-primary btn-lg float-end" data-bs-toggle='modal' data-bs-target='#addModel'><i class="bi bi-plus-lg"></i> &nbsp;Booking</button>
 		</div>
 
-		<table cellpadding="0" cellspacing="0" class=" table table-striped table-bordered">
+		<?php
 
-			<thead>
-				<tr>
-					<th>No .</th>
-					<th>Name</th>
-					<th>Phone No</th>
-					<th>Room type</th>
-					<th>Bedding</th>
-					<th>Meal</th>
-					<th>Check In</th>
-					<th>Check Out</th>
-					<th>Status</th>
-					<th>Timestamp</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="gradeX">
-					<td>Trident</td>
-					<td>
-						Internet
-						Explorer
-						4.0
-					</td>
-					<td>Win 95+</td>
-					<td class="center">4</td>
-					<td class="center">X</td>
-					<td class="center">X</td>
-					<td class="center">X</td>
-					<td class="center">X</td>
-					<td class="center">X</td>
-					<td class="center">X</td>
-					<td> <button class='btn btn-success fw-bold' data-bs-toggle='modal' data-bs-target='#editModel'><i class="bi bi-pencil-square"></i>&nbsp; Edit</button>
-						<button class='btn btn-danger fw-bold'><i class="bi bi-trash"></i>&nbsp; Delete</button>
-					</td>
 
-				</tr>
-				<tr class="gradeC">
-					<td>Trident</td>
-					<td>Internet
-						Explorer 5.0</td>
-					<td>Win 95+</td>
-					<td class="center">5</td>
-					<td class="center">C</td>
-				</tr>
-				<tr class="gradeA">
-					<td>Trident</td>
-					<td>Internet
-						Explorer 5.5</td>
-					<td>Win 95+</td>
-					<td class="center">5.5</td>
-					<td class="center">A</td>
-				</tr>
-				<tr class="gradeA">
-					<td>Trident</td>
-					<td>Internet
-						Explorer 6</td>
-					<td>Win 98+</td>
-					<td class="center">6</td>
-					<td class="center">A</td>
-				</tr>
-				<tr class="gradeA">
-					<td>Trident</td>
-					<td>Internet Explorer 7</td>
-					<td>Win XP SP2+</td>
-					<td class="center">7</td>
-					<td class="center">A</td>
-				</tr>
-			</tbody>
-		</table>
-		<?php include_once('add.php'); ?>
+		// Attempt select query execution
+		$sql = "SELECT * FROM room_booked";
+		if ($result = mysqli_query($link, $sql)) {
+			if (mysqli_num_rows($result) > 0) {
+
+				echo " <table cellpadding='0' cellspacing='0' class='table table-striped table-bordered'>";
+				echo "<thead>";
+				echo "<tr>";
+				echo "<th>No.</th>";
+				echo "<th>Name</th>";
+				echo "<th>Email</th>";
+				echo "<th>Phone No</th>";
+				echo "<th>Room type</th>";
+				echo "<th>Bedding</th>";
+				echo "<th>Meal</th>";
+				echo "<th>Check In</th>";
+				echo "<th>Check Out</th>";
+				echo "<th>Action</th>";
+				echo "</tr>";
+				echo "</thead>";
+				echo "<tbody>";
+				while ($row = mysqli_fetch_array($result)) {
+					//assign the value for show in the table and pass to the edit.
+					$rbook_id =   $row['id'];
+					$rbook_roomid = $row['room_id'];
+					$rbook_username = $row['username'];
+					$rbook_name = $row['name'];
+					$rbook_email = $row['email'];
+					$rbook_phone = $row['phone'];
+					$rbook_meal = $row['meal'];
+					$rbook_checkin = $row['check_in'];
+					$rbook_checkout = $row['check_out'];
+					echo "<tr>";
+					echo "<td>$rbook_id </td>";
+					echo "<td>$rbook_name</td>";
+					echo "<td>$rbook_email</td>";
+					echo "<td>$rbook_phone</td>";
+					if ($rbook_roomid) {
+						// based on room_id to display the roomtype and bedding value
+						$sql = "SELECT room_type, bedding  FROM room WHERE id = $rbook_roomid";
+
+						$res = mysqli_query($link, $sql);
+						if (mysqli_num_rows($res) > 0) {
+							while ($row = mysqli_fetch_assoc($res)) {
+
+								$rbook_roomtype = $row['room_type'];
+								$rbook_bedding = $row['bedding'];
+
+
+								echo "<td>$rbook_roomtype</td>";
+								echo "<td>$rbook_bedding</td>";
+							}
+						}
+					}
+
+					echo "<td>$rbook_meal</td>";
+					echo "<td>$rbook_checkin</td>";
+					echo "<td>$rbook_checkout</td>";
+					echo "<td>";
+					echo " <a class='btn btn-success fw-bold me-3' data-bs-toggle='modal' data-bs-target='#editModel$rbook_id'><i class='bi bi-pencil-square'></i>&nbsp; Edit</a>";
+					echo "<a href='../../action/delete.php?id=$rbook_id&table_name=room_booked' class='btn btn-danger fw-bold'><i class='bi bi-trash'></i>&nbsp;Delete </a>";
+					echo "</td>";
+					echo "</tr>";
+
+					echo include('edit.php');
+				}
+				echo "</tbody>";
+				echo "</table>";
+				// Free result set
+				mysqli_free_result($result);
+			} else {
+				echo "<p class='lead'><em>No records were found.</em></p>";
+			}
+		} else {
+			echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+		}
+
+		include_once('add.php');
+
+
+		// Close connection
+		mysqli_close($link);
+		?>
+
 	</div>
-	<?php include_once('edit.php'); ?>
+
 
 
 

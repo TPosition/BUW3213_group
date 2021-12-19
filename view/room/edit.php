@@ -1,34 +1,43 @@
-<div class="modal fade" id="editModel" tabindex="-1" role="dialog" aria-labelledby="editModelLabel" aria-hidden="true">
+<?php
+// action of room edit path
+include_once('../../action/room_edit.php');
+?>
+
+<div class="modal fade" id="editModel<?php echo $rid; ?>" tabindex="-1" role="dialog" aria-labelledby="editModelLabel" aria-hidden="true">
+
+
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
 
                 <h4 class="modal-title" id="editModelLabel">Edit Room</h4>
             </div>
-            <form method="post">
+            <form method="post" action="edit.php">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Room ID</label>
-                        <input name="usname" value="" class="form-control" placeholder="Enter User name">
+                        <input name="room_id" value="<?php echo $rid; ?>" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Room Type</label>
-                        <input name="pasd" value="" class="form-control" placeholder="Enter Password">
+                        <input name="room_type" value="<?php echo $rroom_type; ?>" class="form-control" required>
+
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Bedding</label>
-                        <input name="usname" value="" class="form-control" placeholder="Enter User name">
+                        <input name="bedding" value="<?php echo $rbedding; ?>" class="form-control" required>
+
                     </div>
                 </div>
 
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
             </form>
 
         </div>

@@ -18,7 +18,10 @@ include_once('../../action/check_login.php');
     <div class="container-fluid">
         <div class="row">
             <?php
+
+
             include_once(DIR_LAYOUT . 'sidebar.php');
+
             include_once('./content.php');
 
             ?>
