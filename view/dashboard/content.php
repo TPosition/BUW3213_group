@@ -83,7 +83,7 @@
                 <td class="center">4</td>
                 <td class="center">X</td>
                 <td class="center">X</td>
-                <td> <button class='btn btn-primary fw-bold'><i class="bi bi-pencil-square"></i>&nbsp; Action</button></td>
+                <td> <a data-bs-toggle='modal' data-bs-target='#actionModel' class='btn btn-primary fw-bold'><i class="bi bi-pencil-square"></i>&nbsp; Action</a></td>
 
             </tr>
             <tr class="gradeC">
@@ -121,5 +121,5 @@
     </table>
 
 
-
+    <?php include_once('action.php'); ?>
 </main>

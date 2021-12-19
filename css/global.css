@@ -3,9 +3,9 @@
 }
 
 .admin-bg-secondary {
-  background-color: #225081;
+  background-color: red;
 }
 
-.sidebar {
+#sidebarMenu{
   height: 100vh;
 }

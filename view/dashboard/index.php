@@ -8,18 +8,8 @@ include_once('../../action/check_login.php');
 <head>
     <?php include_once(DIR_LAYOUT . 'head.php'); ?>
     <title>Dashboard</title>
-    <style>
-        .wrapper{
-            width: 650px;
-            margin: 0 auto;
-        }
-        .page-header h2{
-            margin-top: 0;
-        }
-        table tr td:last-child a{
-            margin-right: 15px;
-        }
-    </style>
+
+
 </head>
 
 <body>
