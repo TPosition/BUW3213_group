@@ -1,6 +1,6 @@
 <?php
 include_once('../../config.php');
-//include_once('../../action/check_login.php');
+include_once('../../action/check_login.php');
 include_once('../../action/reservation_form.php');
 ?>
 <!DOCTYPE html>
@@ -86,12 +86,12 @@ include_once('../../action/reservation_form.php');
 
                 <div class="form-group mb-3 <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
                     <label for="inputCheckIn">Check In Date</label>
-                    <input type="date" class="form-control" id="inputCheckIn" value="<?php echo $check_in_date; ?>" required>
+                    <input type="date" class="form-control" id="inputCheckIn" name="inputCheckIn" value="<?php echo $check_in_date; ?>" required>
                 </div>
 
                 <div class="form-group mb-3 <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
                     <label for="inputCheckOut">Check Out Date</label>
-                    <input type="date" class="form-control" id="inputCheckOut" value="<?php echo $check_out_date; ?>" required>
+                    <input type="date" class="form-control" id="inputCheckOut" name="inputCheckOut" value="<?php echo $check_out_date; ?>" required>
                 </div>
 
                 <div class="d-grid gap-2">
@@ -109,48 +109,48 @@ include_once('../../action/reservation_form.php');
 
 </html>
 
-
 <script>
-    "use strict"
-
-    let room_data = [];
-    <?php
-    $sql = "SELECT * FROM room WHERE id IN (SELECT min(id) FROM room WHERE status='Free' GROUP BY room_type, bedding)";
-    $res = mysqli_query($link, $sql);
-    if (mysqli_num_rows($res) > 0) {
-        while ($row = mysqli_fetch_assoc($res)) {
-            $room_type = $row['room_type'];
-            $bedding = $row['bedding'];
-            $room_id = $row['id'];
-            $status =  $row['status'];
-            echo "room_data.push({room_id: '$room_id', room_type: '$room_type',bedding:'$bedding',status:'$status' });\n";
-        }
-    }
-    ?>
-    const inputRoomType = document.getElementById('inputRoomType');
-    room_data.map(item => {
-        let opt = document.createElement("option");
-        opt.innerText = item.room_type;
-        opt.value = item.room_type;
-        opt.id = item.room_type;
-        inputRoomType.appendChild(opt);
-    });
-
-    $("#inputRoomType").change(function() {
-        let inputBedding = document.getElementById('inputBedding');
-        $("#inputBedding option").remove();
-        room_data.map(item => {
-            if (this.value == item.room_type) {
-                let opt = document.createElement("option");
-                opt.innerText = item.bedding;
-                opt.value = item.room_id;
-                inputBedding.appendChild(opt);
-                console.log(opt.value);
+        "use strict"
+        
+        // Define an empty array to fetch FREE ROOM from database
+        let room_data = [];
+        <?php
+        // Prepare a SELECT statement to get the FREE ROOM data
+        $sql = "SELECT * FROM room WHERE id IN (SELECT min(id) FROM room WHERE status='Free' GROUP BY room_type, bedding)";
+        $res = mysqli_query($link, $sql);
+        if (mysqli_num_rows($res) > 0) {
+            while ($row = mysqli_fetch_assoc($res)) {
+                $room_type = $row['room_type'];
+                $bedding = $row['bedding'];
+                $room_id = $row['id'];
+                $status =  $row['status'];
+                echo "room_data.push({room_id: '$room_id', room_type: '$room_type',bedding:'$bedding',status:'$status' });\n";
             }
-        })
-    });
+        }
+        ?>
+        const inputRoomType = document.getElementById('inputRoomType');
+        room_data.map(item => {
+            let option = document.createElement("option");
+            option.innerText = item.room_type;
+            option.value = item.room_type;
+            option.id = item.room_type;
+            inputRoomType.appendChild(option);
+        });
 
-    $(".form-select option").each(function() {
-        $(this).siblings('[id="' + this.id + '"]').remove();
-    });
-</script>
+        $("#inputRoomType").change(function() {
+            let inputBedding = document.getElementById('inputBedding');
+            $("#inputBedding option").remove();
+            room_data.map(item => {
+                if (this.value == item.room_type) {
+                    let option = document.createElement("option");
+                    option.innerText = item.bedding;
+                    option.value = item.room_id;
+                    inputBedding.appendChild(option);
+                }
+            })
+        });
+
+        $(".form-select option").each(function() {
+            $(this).siblings('[id="' + this.id + '"]').remove();
+        });
+    </script>
