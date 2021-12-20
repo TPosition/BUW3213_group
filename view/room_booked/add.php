@@ -56,10 +56,6 @@ include_once('../../action/booking_add.php');
                             ?>
                         </select>
 
-
-
-                        </select>
-
                     </div>
                 </div>
                 <div class="modal-body">
