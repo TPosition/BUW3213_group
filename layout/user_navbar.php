@@ -11,9 +11,9 @@
         </ul>
 
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">Login</button>
-            <button type="button" class="btn btn-primary">Sign-up</button>
-            <a href="../../action/logout.php"> <button type="button" class="btn btn-primary">Log out</button></a>
+        <a href="../login/index.php"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
+        <a href="../../action/logout.php"> <button type="button" class="btn btn-primary">Sign-up</button></a>
+            <a href="../register/index.php"> <button type="button" class="btn btn-primary">Log out</button></a>
         </div>
     </header>
 </div>
