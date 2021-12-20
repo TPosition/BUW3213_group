@@ -1,6 +1,7 @@
 <?php
 include_once('../../config.php');
 include_once('../../action/check_login.php');
+include_once('../../action/reservation_form.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,30 +36,40 @@ include_once('../../action/check_login.php');
             <form>
                 <div class="form-group mb-3">
                     <label for="inputName">Name:</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Your Name">
+                    <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Your Name">
                 </div>
                 <div class="form-group mb-3">
                     <label for="inputEmail">Email Address:</label>
-                    <input type="text" class="form-control" id="inputEmail" placeholder="Your Email Address">
+                    <input type="text" class="form-control" id="inputEmail" name="inputEmail" placeholder="Your Email Address">
                 </div>
                 <div class="form-group mb-3">
                     <label for="inputPhoneNo">Phone Number:</label>
-                    <input type="text" class="form-control" id="inputPhoneNo" placeholder="Your Phone Number">
+                    <input type="text" class="form-control" id="inputPhoneNo" name="inputPhoneNo" placeholder="Your Phone Number">
                 </div>
                 <div class="form-group mb-3">
                     <label for="inputRoomType">Type of Room</label>
                     <select id="inputRoomType" class="form-select" aria-label="Default select example">
-                        <option></option>
-                        <option>Single Room</option>
-                        <option>Double Room</option>
-                        <option>Luxury Room</option>
-                        <option>Deluxe Room</option>
+                        <option>-- Select the room --</option>
+                        <?php while($table_Row = mysqli_fetch_array($result)):; ?>
+                        <option value="<?php echo $table_Row[0]; ?>"><?php echo $table_Row[0]; ?> Room</option>
+                        <?php endwhile; ?>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="inputBedding">Bedding</label>
+                    <select id="inputBedding" class="form-select" aria-label="Default select example">
+                        <option>-- Select the bedding --</option>
+                        <option>Single</option>
+                        <option>Double</option>
+                        <option>Queen</option>
+                        <option>King</option>
                     </select>
                 </div>
                 <div class="form-group mb-3">
                     <label for="inputMeal">Meal</label>
                     <select id="inputMeal" class="form-select" aria-label="Default select example">
-                        <option></option>
+                        <option>-- Select the meal --</option>
+                        <option>Room Only</option>
                         <option>Breakfast</option>
                         <option>Lunch</option>
                         <option>Dinner</option>
