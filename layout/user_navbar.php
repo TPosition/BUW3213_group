@@ -6,10 +6,10 @@
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
-            <li><a href="#roomDiv" class="nav-link px-2 link-dark">Rooms</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+            <li><a href="index.php#roomDiv" class="nav-link px-2 link-dark">Rooms</a></li>
+            <li><a href="bookinghistory.php" class="nav-link px-2 link-dark">My Booking</a></li>
         </ul>
+
 
         <div class="col-md-4 text-end">
             <?php if (isset($_SESSION["username"])) { ?>
@@ -20,6 +20,8 @@
                 <a href="../login/index.php" type="button" class="btn btn-outline-primary me-2">Login</a>
                 <a href="../register/index.php" type="button" class="btn btn-primary">Sign-up</a>
             <?php } ?>
+
+      
         </div>
     </header>
 </div>
