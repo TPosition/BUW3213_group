@@ -1,6 +1,11 @@
 <?php
 include_once('../../config.php');
+// Initialize the session
+session_start();
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +26,7 @@ include_once('../../config.php');
             <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
+
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="../../image/carousel_slide1.png" class="d-block w-100" alt="Hotel Swimming Pool Scenery">
@@ -93,10 +99,12 @@ include_once('../../config.php');
                 <footer class="blockquote-footer">Ben Cohen, <cite title="Source Title">Co-Founder Ben & Jerry’s</cite></footer>
             </blockquote>
         </div>
+
     </div>
 
     <!-- Import Footer -->
     <?php include_once(DIR_LAYOUT . 'footer.php'); ?>
+    <?php include_once('resetPassword.php'); ?>
     <?php include_once(DIR_SYSTEM . 'globaljs.php'); ?>
 </body>
 

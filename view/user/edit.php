@@ -19,7 +19,15 @@ include_once('../../action/user_edit.php');
                             <input name="username" value="<?php echo $uusername; ?>" class="form-control" placeholder="Enter User name" required>
                         </div>
                     </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="new_password" value="<?php echo $user_password; ?>" class="form-control" placeholder="Leave it Blank if not changed" pattern=".{6,}">
+                        </div>
+                    </div>
+
                     <!-- user id and role  -->
+                    <input type="hidden" name="current_password" value="<?php echo $upassowrd; ?>" class="form-control" />
                     <input type="hidden" name="id" value="<?php echo $uid; ?>" class="form-control" />
                     <input type="hidden" name="role" value="<?php echo $role; ?>" class="form-control" />
                     <div class="modal-footer">
@@ -47,9 +55,16 @@ include_once('../../action/user_edit.php');
                             <input type="email" name="email" value="<?php echo $uemail; ?>" class="form-control" placeholder="Enter Email Address" required>
                         </div>
                     </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="new_password" value="<?php echo $user_password; ?>" class="form-control" placeholder="Leave it Blank if not changed" pattern=".{6,}">
+                        </div>
+                    </div>
 
-                    <!-- user id and role  -->
+                    <!-- user id, password, role  -->
                     <input type="hidden" name="id" value="<?php echo $uid; ?>" class="form-control" />
+                    <input type="hidden" name="current_password" value="<?php echo $upassowrd; ?>" class="form-control" />
                     <input type="hidden" name="role" value="<?php echo $role; ?>" class="form-control" />
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

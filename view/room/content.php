@@ -24,7 +24,7 @@
                 echo "<th>No.</th>";
                 echo "<th>Room Type</th>";
                 echo "<th>Bedding</th>";
-                echo "<th>Name</th>";
+                echo "<th>Username</th>";
                 echo "<th>Status</th>";
                 echo "<th>Action</th>";
                 echo "</tr>";
@@ -35,9 +35,9 @@
                     $rroom_type = $row['room_type'];
                     $rbedding = $row['bedding'];
                     echo "<tr>";
-                    echo "<td>" . $row['id'] . "</td>";
-                    echo "<td>" . $row['room_type'] . "</td>";
-                    echo "<td>" . $row['bedding'] . "</td>";
+                    echo "<td> $rid </td>";
+                    echo "<td> $rroom_type</td>";
+                    echo "<td> $rbedding</td>";
                     echo "<td>" . $row['username'] . "</td>";
                     if ($row['status'] == null) {
                         echo "<td> Empty </td>";

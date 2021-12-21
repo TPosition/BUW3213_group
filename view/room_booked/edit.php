@@ -1,5 +1,5 @@
 <?php
-// action of add booking path
+// action of edit booking path
 include_once('../../action/booking_edit.php');
 ?>
 
@@ -47,6 +47,8 @@ include_once('../../action/booking_edit.php');
 
                         <select name="booking_roomid" class="form-select" aria-label="Default select example">
 
+
+
                             <?php
 
                             // get the room type from room database and show in the option 
@@ -67,6 +69,8 @@ include_once('../../action/booking_edit.php');
                                 }
                             }
                             ?>
+
+
 
 
 

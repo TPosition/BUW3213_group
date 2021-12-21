@@ -1,6 +1,10 @@
 <?php
 include_once('../../config.php');
 include_once('../../action/check_login.php');
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
