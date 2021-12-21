@@ -1,5 +1,5 @@
-<nav id="sidebarMenu" class="admin-bg-primary navbar col-md-3 col-lg-2 d-none d-md-block sidebar collapse">
-    <div class="position-sticky pt-3">
+<nav id="sidebarMenu" class="admin-bg-primary col-md-3 navbar sidebar collapse align-items-start">
+    <div class="position-sticky pt-3" style="top:3em">
         <ul class="nav nav-pills flex-column">
             <?php
             class item
