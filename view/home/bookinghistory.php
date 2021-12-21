@@ -50,6 +50,7 @@ include_once('../../action/check_login.php');
                             $check_in = $row['check_in'];
                             $check_out = $row['check_out'];
                             $meal = $row['meal'];
+                            $status = $row['status'];
                             $id = $row['room_id'];
                             
 
@@ -97,6 +98,12 @@ include_once('../../action/check_login.php');
                             echo "<div class='col text-start'>";
                             echo "<h6>Bedding:</h6>";
                             echo "<p>$bedding Bed</p>";
+                            echo "</div>";
+                            echo "</div>";
+                            echo "<div class='row mx-auto'>";
+                            echo "<div class='col text-start'>";
+                            echo "<h6>Status:</h6>";
+                            echo "<p>$status</p>";
                             echo "</div>";
                             echo "</div>";
                             echo "</div>";
