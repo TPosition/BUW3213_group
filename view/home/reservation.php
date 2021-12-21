@@ -79,8 +79,8 @@ include_once('../../action/reservation_form.php');
                         <option value="breakfast">Breakfast</option>
                         <option value="lunch">Lunch</option>
                         <option value="dinner">Dinner</option>
-                        <option value="half_board">Half Board (Breakfast + Lunch)</option>
-                        <option value="full_board">Full Board (Breakfast + Lunch + Dinner)</option>
+                        <option value="half board">Half Board (Breakfast + Lunch)</option>
+                        <option value="full board">Full Board (Breakfast + Lunch + Dinner)</option>
                     </select>
                 </div>
 
