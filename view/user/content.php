@@ -46,6 +46,8 @@
 
                         $uid =   $row['id'];
                         $uusername = $row['username'];
+                        $upassowrd = $row['password'];
+
                         $role = $row['role'];
                         if ($role == 'admin') {
                             echo "<td> $i</td>";

@@ -64,11 +64,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["username"] = $username;
 
 
-                            if ($_SESSION["role"] == "admin") {
+                            if ($role == "admin") {
                                 // Redirect user to dashboard page
                                 header("location: ../dashboard/index.php");
                                 exit;
-                            } else  if ($_SESSION["role"] == "user") {
+                            } else  if ($role == "user") {
                                 // Redirect user to home page
                                 header("location:  ../home/index.php");
                                 exit;

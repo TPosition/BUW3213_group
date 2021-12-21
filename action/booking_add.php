@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkin = $_POST["checkin"];
     $checkout = $_POST["checkout"];
     $date =  date('Y-m-d H:i:s');
-    $status = 'confirmed';
+    $status = 'Confirmed';
 
     // Check input errors before inserting in database
     if (!empty($username) && !empty($name) && !empty($email) && !empty($phone) && !empty($room_id) && !empty($meal) & !empty($checkin) && !empty($checkout)) {

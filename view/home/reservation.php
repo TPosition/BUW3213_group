@@ -2,7 +2,9 @@
 include_once('../../config.php');
 include_once('../../action/check_login.php');
 include_once('../../action/reservation_form.php');
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
