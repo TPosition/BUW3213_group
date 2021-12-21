@@ -1,4 +1,4 @@
-<header class="admin-bg-primary navbar sticky-top flex-md-nowrap shadow ">
+<header class="admin-bg-primary navbar flex-md-nowrap shadow ">
     <button class="navbar-toggler d-md-none collapsed border border-3 rounded border-white ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <i class=" bi bi-list text-white"></i>
     </button>
