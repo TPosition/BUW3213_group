@@ -75,12 +75,12 @@ include_once('../../action/reservation_form.php');
                     <label for="inputMeal">Meal</label>
                     <select id="inputMeal" name="inputMeal" class="form-select" aria-label="Default select example" required>
                         <option value="" disabled selected>-- Select the meal --</option>
-                        <option value="room">Room Only</option>
-                        <option value="breakfast">Breakfast</option>
-                        <option value="lunch">Lunch</option>
-                        <option value="dinner">Dinner</option>
-                        <option value="half board">Half Board (Breakfast + Lunch)</option>
-                        <option value="full board">Full Board (Breakfast + Lunch + Dinner)</option>
+                        <option value="Room">Room Only</option>
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                        <option value="Half Board">Half Board (Breakfast + Lunch)</option>
+                        <option value="Full Board">Full Board (Breakfast + Lunch + Dinner)</option>
                     </select>
                 </div>
 
