@@ -17,7 +17,7 @@
 		$sql = "SELECT * FROM room_booked";
 		if ($result = mysqli_query($link, $sql)) {
 			if (mysqli_num_rows($result) > 0) {
-
+				echo "<div class='table-responsive'>";
 				echo " <table cellpadding='0' cellspacing='0' class='table table-striped table-bordered'>";
 				echo "<thead>";
 				echo "<tr>";
@@ -81,6 +81,7 @@
 				}
 				echo "</tbody>";
 				echo "</table>";
+				echo "</div>";
 				// Free result set
 				mysqli_free_result($result);
 			} else {
