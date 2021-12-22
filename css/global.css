@@ -9,3 +9,7 @@
 main {
   min-height: 100vh;
 }
+
+.table-responsive td {
+  white-space: nowrap;
+}
