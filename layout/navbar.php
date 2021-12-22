@@ -4,11 +4,9 @@
     </button>
     <a class="navbar-brand text-white col-md-3 me-0 px-5 text-start" href="#">Genibenix Hotel</a>
 
-    <div class="col-lg-6 text-end">
-        <p class="text-white"><?php echo htmlspecialchars($_SESSION["username"]); ?></p>
-    </div>
+
     <div class="col-lg-3 text-end">
-        <a type="button" class="text-white" href="../../action/logout.php"><i class="bi bi-box-arrow-right me-3" style="font-size: 25px;"></i></a>
+        <a type="button" class="text-white" href="../../action/logout.php"><i class="bi bi-box-arrow-right me-4" style="font-size: 25px;"></i></a>
 
     </div>
 

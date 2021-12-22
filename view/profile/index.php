@@ -7,7 +7,7 @@ include_once('../../action/check_login.php');
 
 <head>
     <?php include_once(DIR_LAYOUT . 'head.php'); ?>
-    <title>Room Booked</title>
+    <title>User Profile</title>
 
 
 </head>
@@ -18,15 +18,20 @@ include_once('../../action/check_login.php');
     <div class="container-fluid">
         <div class="row">
             <?php
+
+
             include_once(DIR_LAYOUT . 'sidebar.php');
-            include_once('content.php');
+
+            include_once('./content.php');
 
             ?>
         </div>
     </div>
+
     <?php include_once(DIR_LAYOUT . 'footer.php'); ?>
     <?php include_once(DIR_SYSTEM . 'globaljs.php'); ?>
+
+
 </body>
 
 </html>
-

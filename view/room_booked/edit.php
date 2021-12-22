@@ -1,7 +1,10 @@
 <?php
 // action of edit booking path
 include_once('../../action/booking_edit.php');
+
+
 ?>
+
 
 <div class="modal fade" id="editModel<?php echo $rbook_id ?>" tabindex="-1" role="dialog" aria-labelledby="editModelLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -53,16 +56,17 @@ include_once('../../action/booking_edit.php');
 
                             // get the room type from room database and show in the option 
                             if (isset($rbook_roomid)) {
-                                $sql = "SELECT id, room_type  FROM room";
+                                $sql = "SELECT * FROM room";
 
-                                $res = mysqli_query($link, $sql);
-                                if (mysqli_num_rows($res) > 0) {
-                                    while ($row = mysqli_fetch_assoc($res)) {
+                                $result_room = mysqli_query($link, $sql);
+                                if (mysqli_num_rows($result_room) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result_room)) {
                                         $room_type = $row['room_type'];
                                         $room_id = $row['id'];
+                                        $room_status = $row['status'];
                                         if ($rbook_roomid == $room_id) {
                                             echo  "<option value='$room_id' selected>$room_type</option>";
-                                        } else {
+                                        } else if ($room_status == 'Free') {
                                             echo " <option value='$room_id'>$room_type</option>";
                                         }
                                     }

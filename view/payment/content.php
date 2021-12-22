@@ -1,4 +1,4 @@
-<main class="col-md-9 ms-sm-auto px-md-4">
+<main class="col-md-9 col-lg-10 ms-sm-auto px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom my-4">
         <h1 class="h2">Payment Details</h1>
     </div>
@@ -11,6 +11,7 @@
 
         // Attempt select query execution
         $sql = "SELECT * FROM payment";
+        $i = 1;  // make for sequential number
         if ($result = mysqli_query($link, $sql)) {
             if (mysqli_num_rows($result) > 0) {
 
@@ -30,15 +31,16 @@
                 echo "<tbody>";
                 while ($row = mysqli_fetch_array($result)) {
                     //assign the value for show in the table and pass to the edit.
-                    $payment_id =   $row['id'];
+                    $payment_id =  $row['id'];
                     $payment_room_booked_id =   $row['room_booked_id'];
                     $payment_username = $row['username'];
                     $payment_name = $row['name'];
                     $payment_checkin = $row['check_in'];
                     $payment_checkout = $row['check_out'];
                     $payment_total = $row['grand_total'];
+
                     echo "<tr>";
-                    echo "<td>$payment_id </td>";
+                    echo "<td> $i.</td>";
                     echo "<td>$payment_username</td>";
                     echo "<td>$payment_name</td>";
                     if ($payment_room_booked_id) {
@@ -74,6 +76,8 @@
                     echo "<td>RM &nbsp;$payment_total</td>";
 
                     echo "</tr>";
+
+                    $i++;
                 }
                 echo "</tbody>";
                 echo "</table>";
