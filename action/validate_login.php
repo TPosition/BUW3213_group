@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["username"] = $username;
 
 
-                            if ($role == "admin") {
+                            if ($role == "admin" || $role == 'super admin') {
                                 // Redirect user to dashboard page
                                 header("location: ../dashboard/index.php");
                                 exit;

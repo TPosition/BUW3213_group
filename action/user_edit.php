@@ -8,12 +8,10 @@ $user_id =  $user_role =  $user_username =  $user_password = "";
 
 // Processing form data when form is submitted
 if (isset($_POST["id"])) {
-
     $user_id = $_POST["id"];
     $user_role = $_POST["role"];
-    $user_username = $_POST["username"];
     $user_password = $_POST["current_password"];
-
+    $user_username = $_POST["username"];
 
     // reassign the user password variable if password got change
     if (isset($_POST["new_password"])) {
@@ -21,9 +19,9 @@ if (isset($_POST["id"])) {
     }
 
 
-
-    if ($user_role == 'admin' && !empty($user_password)) {
+    if ($user_role == 'admin' || $user_role == 'super admin' ) {
         $sql = "UPDATE user SET username=?, password=? WHERE id=?";
+
         if ($stmt = mysqli_prepare($link, $sql)) {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "ssi", $param_username, $param_password, $param_id);
@@ -33,14 +31,25 @@ if (isset($_POST["id"])) {
             $param_password =  password_hash($user_password, PASSWORD_DEFAULT);
             $param_id =  $user_id;
 
-
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
-                // Records updated successfully. Redirect to landing page
-                header("location: index.php");
+                // Records updated successfully. 
+
+                echo  "<script>
+                    
+                             alert('Update Successful');  
+                             window.location='index.php'
+                    
+                        </script>";
                 exit();
             } else {
-                echo "Something went wrong. Please try again later.";
+
+                echo "<script>
+                    
+                         alert('This username is already taken');  
+                         window.location='index.php'
+                     
+                       </script>";
             }
         }
 
@@ -48,11 +57,9 @@ if (isset($_POST["id"])) {
         mysqli_stmt_close($stmt);
         // Close connection
         mysqli_close($link);
-    } else if (!empty($user_password)) {
-
+    } else if ($user_role == 'user') {
         $user_phone = $_POST["phone"];
         $user_email =  $_POST["email"];
-
 
         $sql = "UPDATE user SET username=?, phone=?, email=?, password=?  WHERE id=?";
         if ($stmt = mysqli_prepare($link, $sql)) {
@@ -69,19 +76,25 @@ if (isset($_POST["id"])) {
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
                 // Records updated successfully. Redirect to landing page
-                header("location: index.php");
+                echo  "<script>
+                    
+                    alert('Update Successful');  
+                    window.location='index.php'
+       
+                </script>";
                 exit();
             } else {
-                echo "Something went wrong. Please try again later.";
+                echo "<script>
+                    
+                alert('This username is already taken');  
+                window.location='index.php'
+            
+              </script>";
             }
         }
 
         // Close statement
         mysqli_stmt_close($stmt);
-        // Close connection
-        mysqli_close($link);
-    } else {
-        header("location: index.php");
         // Close connection
         mysqli_close($link);
     }

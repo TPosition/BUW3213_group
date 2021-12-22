@@ -43,7 +43,7 @@ include_once('../../action/booking_add.php');
                         <select name="room_id" class="form-select" aria-label="Default select example">
 
                             <?php
-                            $sql = "SELECT id, room_type FROM room";
+                            $sql = "SELECT * FROM room WHERE status = 'Free'";
                             $res = mysqli_query($link, $sql);
                             if (mysqli_num_rows($res) > 0) {
                                 while ($row = mysqli_fetch_assoc($res)) {

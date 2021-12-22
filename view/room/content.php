@@ -1,4 +1,4 @@
-<main class="col-md-9 ms-sm-auto px-md-4">
+<main class="col-md-9 col-lg-10 ms-sm-auto px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom my-4">
         <h1 class="h2">Room Information</h1>
     </div>
@@ -16,6 +16,7 @@
 
         // Attempt select query execution
         $sql = "SELECT * FROM room";
+        $i = 1;  // make for sequential number
         if ($result = mysqli_query($link, $sql)) {
             if (mysqli_num_rows($result) > 0) {
                 echo "<div class='table-responsive'>";
@@ -36,7 +37,7 @@
                     $rroom_type = $row['room_type'];
                     $rbedding = $row['bedding'];
                     echo "<tr>";
-                    echo "<td> $rid </td>";
+                    echo "<td> $i.</td>";
                     echo "<td> $rroom_type</td>";
                     echo "<td> $rbedding</td>";
                     echo "<td>" . $row['username'] . "</td>";
@@ -51,7 +52,9 @@
                     echo "</td>";
                     echo "</tr>";
 
+                    // Based on id to the particular edit model.
                     echo include('edit.php');
+                    $i++;
                 }
                 echo "</tbody>";
                 echo "</table>";
@@ -65,11 +68,14 @@
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
         }
 
+        // Click the add room button will direct to add.php form
+        include_once('add.php');
+
         // Close connection
         mysqli_close($link);
         ?>
 
     </div>
-    <?php include_once('add.php'); ?>
+
 
 </main>

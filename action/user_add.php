@@ -32,8 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 mysqli_stmt_store_result($stmt);
 
                 if (mysqli_stmt_num_rows($stmt) == 1) {
-                    echo "<script>alert('This username is already taken');  
-                    window.location='index.php'</script>";
+                    echo "<script>
+                    
+                            alert('This username is already taken');  
+                             window.location='index.php'
+                    
+                        </script>";
                 }
             } else {
                 echo "Oops! Something went wrong. Please try again later.";

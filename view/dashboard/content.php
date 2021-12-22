@@ -1,4 +1,4 @@
-<main class="col-md-9 ms-sm-auto px-md-4">
+<main class="col-md-9 col-lg-10 ms-sm-auto px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 my-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
     </div>
@@ -100,6 +100,7 @@
 
     // Attempt select query execution for not confirmed status
     $sql = "SELECT * FROM room_booked WHERE status = 'Not Confirmed'";
+    $i = 1;  // make for sequential number
     if ($result = mysqli_query($link, $sql)) {
         if (mysqli_num_rows($result) > 0) {
             echo "<div class='table-responsive'>";
@@ -133,7 +134,7 @@
                 $book_checkout = $row['check_out'];
                 $book_status = $row['status'];
                 echo "<tr>";
-                echo "<td>$book_id </td>";
+                echo "<td> $i.</td>";
                 echo "<td>$book_username </td>";
                 echo "<td>$book_name</td>";
                 echo "<td>$book_email</td>";
@@ -164,7 +165,9 @@
                 echo "</td>";
                 echo "</tr>";
 
+                //direct to reservation.php form
                 echo include('reservation.php');
+                $i++;
             }
             echo "</tbody>";
             echo "</table>";
