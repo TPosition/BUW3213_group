@@ -28,7 +28,7 @@ if (isset($_POST["booking_id"])) {
     // Check input errors before inserting in database
     if (!empty($booking_status)) {
         // Prepare an update and insert statement for room_booked and payment database
-        $sql_room = "UPDATE room SET status=? WHERE id=?";
+        $sql_room = "UPDATE room SET status=?, booked_by_username=? WHERE id=?";
         $sql_room_booked = "UPDATE room_booked SET status=? WHERE id=?";
         $sql_payment = "INSERT INTO payment (username, name, room_booked_id ,check_in, check_out, grand_total ) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -55,7 +55,7 @@ if (isset($_POST["booking_id"])) {
 
                 if ($stmt_three = mysqli_prepare($link, $sql_room)) {
                     // Bind variables to the prepared statement as parameters
-                    mysqli_stmt_bind_param($stmt_three, "si", $param_room_status, $param_room_id);
+                    mysqli_stmt_bind_param($stmt_three, "ssi", $param_room_status,  $param_username, $param_room_id);
 
                     // Set parameters
                     $param_room_status = $room_status;

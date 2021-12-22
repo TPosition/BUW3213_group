@@ -55,7 +55,7 @@
                         // Only the super admin can do the action for admin 
                         if ($_SESSION['role'] == 'super admin') {
                             echo "<td>";
-                            echo " <a class='btn btn-success fw-bold me-3' data-bs-toggle='modal'   data-bs-target='#editModel$uid'><i class='bi bi-pencil-square'></i>&nbsp; Edit</a>";
+                            echo " <a class='btn btn-success fw-bold me-2' data-bs-toggle='modal'   data-bs-target='#editModel$uid'><i class='bi bi-pencil-square'></i>&nbsp; Edit</a>";
                             echo "<a href='../../action/delete.php?id=$uid&table_name=user' class='btn btn-danger fw-bold'><i class='bi bi-trash'></i>&nbsp;Delete </a>";
                             echo "</td>";
                         } else {
@@ -123,7 +123,7 @@
                         echo "<td> $uusername </td>";
                         echo "<td> $uphone </td>";
                         echo "<td>";
-                        echo " <a class='btn btn-success fw-bold me-3' data-bs-toggle='modal'   data-bs-target='#editModel$uid'><i class='bi bi-pencil-square'></i>&nbsp; Edit</a>";
+                        echo " <a class='btn btn-success fw-bold me-2' data-bs-toggle='modal'   data-bs-target='#editModel$uid'><i class='bi bi-pencil-square'></i>&nbsp; Edit</a>";
                         echo "<a href='../../action/delete.php?id=$uid&table_name=user' class='btn btn-danger fw-bold'><i class='bi bi-trash'></i>&nbsp;Delete </a>";
                         echo "</td>";
                         echo "</tr>";

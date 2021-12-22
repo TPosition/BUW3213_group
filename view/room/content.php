@@ -36,11 +36,12 @@
                     $rid =   $row['id'];
                     $rroom_type = $row['room_type'];
                     $rbedding = $row['bedding'];
+                    $rusername = $row['booked_by_username'];
                     echo "<tr>";
                     echo "<td> $i.</td>";
                     echo "<td> $rroom_type</td>";
                     echo "<td> $rbedding</td>";
-                    echo "<td>" . $row['username'] . "</td>";
+                    echo "<td> $rusername</td>";
                     if ($row['status'] == null) {
                         echo "<td> Empty </td>";
                     } else {

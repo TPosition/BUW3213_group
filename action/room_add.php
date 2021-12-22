@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $room_type = $_POST["room_type"];
     $bedding = $_POST["bedding"];
     $username = null;
-    $status = null;
+    $status = "Free";
 
     // Check input errors before inserting in database
     if (!empty($room_type) && !empty($bedding)) {

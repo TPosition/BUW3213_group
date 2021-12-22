@@ -3,7 +3,7 @@
 		<h1 class="h2">Room Booking</h1>
 	</div>
 
-	<div class="row m-5">
+	<div class="row my-5">
 
 		<div class="clearfix mb-3">
 
@@ -74,8 +74,11 @@
 					echo "<td>$rbook_meal</td>";
 					echo "<td>$rbook_checkin</td>";
 					echo "<td>$rbook_checkout</td>";
+
+
+
 					echo "<td>";
-					echo " <a class='btn btn-success fw-bold me-3' data-bs-toggle='modal' data-bs-target='#editModel$rbook_id'><i class='bi bi-pencil-square'></i>&nbsp; Edit</a>";
+					echo " <a class='btn btn-success fw-bold me-2' data-bs-toggle='modal' data-bs-target='#editModel$rbook_id'><i class='bi bi-pencil-square'></i>&nbsp; Edit</a>";
 					echo "<a href='../../action/delete.php?id=$rbook_id&table_name=room_booked' class='btn btn-danger fw-bold'><i class='bi bi-trash'></i>&nbsp;Delete </a>";
 					echo "</td>";
 					echo "</tr>";
@@ -83,6 +86,8 @@
 					echo include('edit.php');
 					$i++;
 				}
+
+
 				echo "</tbody>";
 				echo "</table>";
 				echo "</div>";

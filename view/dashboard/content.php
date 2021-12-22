@@ -169,6 +169,8 @@
                 echo include('reservation.php');
                 $i++;
             }
+
+
             echo "</tbody>";
             echo "</table>";
             echo "</div>";
