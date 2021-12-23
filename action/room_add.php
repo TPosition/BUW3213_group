@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check input errors before inserting in database
     if (!empty($room_type) && !empty($bedding)) {
         // Prepare an insert statement
-        $sql = "INSERT INTO room (room_type, bedding, username,status ) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO room (room_type, bedding, username, status ) VALUES (?, ?, ?, ?)";
 
 
         if ($stmt = mysqli_prepare($link, $sql)) {

@@ -11,7 +11,6 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $id = $row['id'];
         $current_username = $row['username'];
-        $current_password = $row['password'];
         $role = $row['role'];
     }
 }
@@ -45,14 +44,13 @@ if (mysqli_num_rows($result) > 0) {
 
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="new_password" value="<?php echo $user_password ?>" class="form-control" pattern=".{6,}" />
+                    <input type="password" name="new_password" value="" class="form-control" pattern=".{6,}" />
                     <div class="form-text">*Leave it Blank if not changed</div>
                 </div>
 
-                <!-- id, role and current_password value is used update to database when form submmited -->
+                <!-- id, role value is used update to database when form submmited -->
                 <input type="hidden" name="id" value="<?php echo $id; ?>" class="form-control" />
                 <input type="hidden" name="role" value="<?php echo $role; ?>" class="form-control" />
-                <input type="hidden" name="current_password" value="<?php echo $current_password; ?>" class="form-control" />
                 <button type="submit" class="btn btn-primary float-end mt-4">Submit</button>
 
 

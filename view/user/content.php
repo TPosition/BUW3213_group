@@ -44,8 +44,6 @@
 
                         $uid =   $row['id'];
                         $uusername = $row['username'];
-                        $upassowrd = $row['password'];
-
                         $role = $row['role'];
 
                         echo "<tr>";

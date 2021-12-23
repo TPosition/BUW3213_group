@@ -38,8 +38,10 @@ if ($_SESSION["role"] == 'admin' || $_SESSION["role"] == 'super admin') {
 <?php
 } else if ($_SESSION["role"] == 'user') {
     header("location: ../home/index.php");
+    exit;
 } else {
     header("location: ../login/index.php");
+    exit;
 }
 
 ?>
