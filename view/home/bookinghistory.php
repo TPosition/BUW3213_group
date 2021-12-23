@@ -52,6 +52,7 @@ include_once('../../action/check_login.php');
                             $meal = $row['meal'];
                             $status = $row['status'];
                             $id = $row['room_id'];
+                            $booked_time = $row['timestamp'];
                             
 
                             $sql_room = "SELECT * FROM room WHERE id = '$id'";
@@ -104,6 +105,10 @@ include_once('../../action/check_login.php');
                             echo "<div class='col text-start'>";
                             echo "<h6>Status:</h6>";
                             echo "<p>$status</p>";
+                            echo "</div>";
+                            echo "<div class='col text-start'>";
+                            echo "<h6>Booked On:</h6>";
+                            echo "<p>$booked_time</p>";
                             echo "</div>";
                             echo "</div>";
                             echo "</div>";
