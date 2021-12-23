@@ -51,7 +51,7 @@ include_once('../../action/user_add.php');
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Phone No</label>
-                            <input type="phone" name="user_phone" value="<?php echo $phone ?>" class="form-control" placeholder="Enter a Phone number" pattern="[0-9]{10,11}" />
+                            <input type="number" name="user_phone" value="<?php echo $phone ?>" class="form-control" placeholder="Enter a Phone number" pattern="[0-9]{10,11}" />
 
                         </div>
                     </div>
