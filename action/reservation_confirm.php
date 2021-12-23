@@ -25,16 +25,13 @@ if (isset($_POST["booking_id"])) {
 
 
 
-    // Check input errors before inserting in database
+    // Check the status
     if (!empty($booking_status)) {
-        // Prepare an update and insert statement for room_booked and payment database
-        $sql_room = "UPDATE room SET status=?, booked_by_username=? WHERE id=?";
-        $sql_room_booked = "UPDATE room_booked SET status=? WHERE id=?";
-        $sql_payment = "INSERT INTO payment (username, name, room_booked_id ,check_in, check_out, grand_total ) VALUES (?, ?, ?, ?, ?, ?)";
 
+        $sql_room_booked = "UPDATE room_booked SET status=? WHERE id=?";
 
         if ($stmt_one = mysqli_prepare($link, $sql_room_booked)) {
-            // Bind variables to the prepared statement as parameters
+
             mysqli_stmt_bind_param($stmt_one, "si", $param_status, $param_id);
 
             // Set parameters
@@ -42,46 +39,60 @@ if (isset($_POST["booking_id"])) {
             $param_id =  $booking_id;
 
 
-            if ($stmt_two = mysqli_prepare($link, $sql_payment)) {
-                // Bind variables to the prepared statement as parameters
-                mysqli_stmt_bind_param($stmt_two, "ssssss", $param_username, $param_name, $param_id, $param_checkin, $param_checkout, $param_total);
+            // Check the status, if status is confirmed update the room and payment table
+            if ($booking_status == 'Confirmed') {
 
-                $param_name =  $book_name;
-                $param_username =  $book_username;
-                $param_checkin =  $book_checkin;
-                $param_checkout =  $book_checkout;
-                $param_total =  $book_total;
+                // Prepare an update and insert statement for room_booked and payment database
+                $sql_room = "UPDATE room SET status=?, booked_by_username=? WHERE id=?";
+                $sql_payment = "INSERT INTO payment (username, name, room_booked_id ,check_in, check_out, grand_total ) VALUES (?, ?, ?, ?, ?, ?)";
 
 
-                if ($stmt_three = mysqli_prepare($link, $sql_room)) {
+                if ($stmt_two = mysqli_prepare($link, $sql_payment)) {
                     // Bind variables to the prepared statement as parameters
-                    mysqli_stmt_bind_param($stmt_three, "ssi", $param_room_status,  $param_username, $param_room_id);
+                    mysqli_stmt_bind_param($stmt_two, "ssssss", $param_username, $param_name, $param_id, $param_checkin, $param_checkout, $param_total);
 
-                    // Set parameters
-                    $param_room_status = $room_status;
-                    $param_room_id =  $room_id;
+                    $param_name =  $book_name;
+                    $param_username =  $book_username;
+                    $param_checkin =  $book_checkin;
+                    $param_checkout =  $book_checkout;
+                    $param_total =  $book_total;
+                    $param_id =  $booking_id;
 
-                    // Attempt to execute the prepared statement
-                    if (mysqli_stmt_execute($stmt_one) && mysqli_stmt_execute($stmt_two)) {
 
-                        if (mysqli_stmt_execute($stmt_three)) {
-                            // Records updated successfully. Redirect to landing page
+                    if ($stmt_three = mysqli_prepare($link, $sql_room)) {
+                        // Bind variables to the prepared statement as parameters
+                        mysqli_stmt_bind_param($stmt_three, "ssi", $param_room_status,  $param_username, $param_room_id);
+
+                        // Set parameters
+                        $param_room_status = $room_status;
+                        $param_username =  $book_username;
+                        $param_room_id =  $room_id;
+
+                        // Attempt to execute the prepared statement
+                        if (mysqli_stmt_execute($stmt_three) && mysqli_stmt_execute($stmt_two)) {
+
+                            // Records updated successfully. 
                             header("location: index.php");
                             exit();
                         } else {
                             echo "Something went wrong. Please try again later.";
                         }
-                    } else {
-                        echo "Something went wrong. Please try again later.";
+                        //Close statement three
+                        mysqli_stmt_close($stmt_three);
                     }
+                    //Close statement two
+                    mysqli_stmt_close($stmt_two);
                 }
+
+                // if statement one execute successful 
+            } else if (mysqli_stmt_execute($stmt_one)) {
+                header("location: index.php");
+                exit();
             }
+            //Close statement one 
+            mysqli_stmt_close($stmt_one);
         }
 
-        // Close statement
-        mysqli_stmt_close($stmt_one);
-        mysqli_stmt_close($stmt_two);
-        mysqli_stmt_close($stmt_three);
 
         // Close connection
         mysqli_close($link);

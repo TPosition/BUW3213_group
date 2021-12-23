@@ -45,7 +45,7 @@ if ($_SESSION["role"] == 'user') {
                 </div>
                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
-                    <div class="form-group mb-3 <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
+                    <div class="form-group mb-3 ">
                         <label for="inputName">Name:</label>
                         <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Your Name" value="<?php echo $name ?>" required>
                     </div>
@@ -62,21 +62,21 @@ if ($_SESSION["role"] == 'user') {
                         <span class="help-block"><?php echo $phone_err; ?></span>
                     </div>
 
-                    <div class="form-group mb-3 <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
+                    <div class="form-group mb-3 ">
                         <label for="inputRoomType">Type of Room</label>
                         <select id="inputRoomType" name="inputRoomType" class="form-select" aria-label="Default select example" required>
                             <option value="" disabled selected>-- Select the room --</option>
                         </select>
                     </div>
 
-                    <div class="form-group mb-3 <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
+                    <div class="form-group mb-3 ">
                         <label for="inputBedding">Bedding</label>
                         <select id="inputBedding" name="inputBedding" class="form-select" aria-label="Default select example" required>
                             <option value="" disabled selected>-- Select the room for choosing the bedding --</option>
                         </select>
                     </div>
 
-                    <div class="form-group mb-3 <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
+                    <div class="form-group mb-3">
                         <label for="inputMeal">Meal</label>
                         <select id="inputMeal" name="inputMeal" class="form-select" aria-label="Default select example" required>
                             <option value="" disabled selected>-- Select the meal --</option>
@@ -89,12 +89,12 @@ if ($_SESSION["role"] == 'user') {
                         </select>
                     </div>
 
-                    <div class="form-group mb-3 <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
+                    <div class="form-group mb-3 ">
                         <label for="inputCheckIn">Check In Date</label>
                         <input type="date" class="form-control" id="inputCheckIn" name="inputCheckIn" value="<?php echo $check_in_date; ?>" required>
                     </div>
 
-                    <div class="form-group mb-3 <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
+                    <div class="form-group mb-3 ">
                         <label for="inputCheckOut">Check Out Date</label>
                         <input type="date" class="form-control" id="inputCheckOut" name="inputCheckOut" value="<?php echo $check_out_date; ?>" required>
                     </div>
@@ -109,6 +109,7 @@ if ($_SESSION["role"] == 'user') {
 
         <!-- Import Footer -->
         <?php include_once(DIR_LAYOUT . 'footer.php'); ?>
+        <?php include_once('resetPassword.php'); ?>
         <?php include_once(DIR_SYSTEM . 'globaljs.php'); ?>
     </body>
 

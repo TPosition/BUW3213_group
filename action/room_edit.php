@@ -10,25 +10,21 @@ $room_id = $room_type = $bedding = "";
 if (isset($_POST["room_id"])) {
 
     $room_id = $_POST["room_id"];
-    $status = null;
-    $username = null;
     $room_type =  $_POST["room_type"];
     $bedding =  $_POST["bedding"];
 
     // Check input errors before inserting in database
     if (!empty($room_type) && !empty($bedding)) {
         // Prepare an update statement
-        $sql = "UPDATE room SET room_type=?, bedding=?, status=?, username=? WHERE id=?";
+        $sql = "UPDATE room SET room_type=?, bedding=? WHERE id=?";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssssi", $param_room_type, $param_bedding, $param_username, $param_status, $param_id);
+            mysqli_stmt_bind_param($stmt, "ssi", $param_room_type, $param_bedding, $param_id);
 
             // Set parameters
             $param_room_type = $room_type;
             $param_bedding = $bedding;
-            $param_username = $username;
-            $param_status = $status;
             $param_id =   $room_id;
 
             // Attempt to execute the prepared statement
