@@ -93,10 +93,8 @@ session_start();
         <div class="container">
             <h1>Service is our mission</h1>
             <blockquote class="blockquote text-center">
-                <p>“There is a spiritual aspect to our lives — when we give, we receive —
-                    when a business does something good for somebody, that somebody feels
-                    good about them!”</p>
-                <footer class="blockquote-footer">Ben Cohen, <cite title="Source Title">Co-Founder Ben & Jerry’s</cite></footer>
+                <p>“There is a spiritual aspect to our career. It is to give somethings that cannot be bought or measured by real money!”</p>
+                <footer class="blockquote-footer">Ting Boon Ming, <cite title="Source Title">Founder Genibenix</cite></footer>
             </blockquote>
         </div>
 
