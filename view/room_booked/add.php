@@ -38,22 +38,14 @@ include_once('../../action/booking_add.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Room Type</label>
-
-
-                        <select name="room_id" class="form-select" aria-label="Default select example">
-
-                            <?php
-                            $sql = "SELECT * FROM room WHERE status = 'Free'";
-                            $res = mysqli_query($link, $sql);
-                            if (mysqli_num_rows($res) > 0) {
-                                while ($row = mysqli_fetch_assoc($res)) {
-                                    $room_type = $row['room_type'];
-                                    $room_id = $row['id'];
-
-                                    echo "<option value='$room_id'>$room_type</option>";
-                                }
-                            }
-                            ?>
+                        <select name="roomType" id="roomType" class="form-select" aria-label="Default select example">
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Bedding</label>
+                        <select name="bedding_room_id" id="bedding_room_id" class="form-select" aria-label="Default select example">
                         </select>
 
                     </div>
@@ -91,3 +83,48 @@ include_once('../../action/booking_add.php');
         </div>
     </div>
 </div>
+<script>
+    "use strict"
+
+    // Define an empty array to fetch FREE ROOM from database
+    let room_data = [];
+    <?php
+    // Prepare a SELECT statement to get the FREE ROOM data
+    $sql = "SELECT * FROM room WHERE id IN (SELECT min(id) FROM room WHERE status='Free' GROUP BY room_type, bedding)";
+    $res = mysqli_query($link, $sql);
+    if (mysqli_num_rows($res) > 0) {
+        while ($row = mysqli_fetch_assoc($res)) {
+            $room_type = $row['room_type'];
+            $bedding = $row['bedding'];
+            $room_id = $row['id'];
+            $status =  $row['status'];
+            echo "room_data.push({room_id: '$room_id', room_type: '$room_type',bedding:'$bedding',status:'$status' });\n";
+        }
+    }
+    ?>
+    const roomType = document.getElementById('roomType');
+    room_data.map(item => {
+        let option = document.createElement("option");
+        option.innerText = item.room_type;
+        option.value = item.room_type;
+        option.id = item.room_type;
+        roomType.appendChild(option);
+    });
+
+    $("#roomType").change(function() {
+        let bedding_room_id = document.getElementById('bedding_room_id');
+        $("#bedding_room_id option").remove();
+        room_data.map(item => {
+            if (this.value == item.room_type) {
+                let option = document.createElement("option");
+                option.innerText = item.bedding;
+                option.value = item.room_id;
+                bedding_room_id.appendChild(option);
+            }
+        })
+    });
+
+    $(".form-select option").each(function() {
+        $(this).siblings('[id="' + this.id + '"]').remove();
+    });
+</script>

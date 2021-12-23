@@ -36,7 +36,10 @@
                     echo "<tr>";
                     echo "<th>No.</th>";
                     echo "<th>Username</th>";
-                    echo "<th>Action</th>";
+
+                    if ($_SESSION['role'] == 'super admin') {
+                        echo "<th>Action</th>";
+                    }
                     echo "</tr>";
                     echo "</thead>";
                     echo "<tbody>";
@@ -47,7 +50,7 @@
                         $role = $row['role'];
 
                         echo "<tr>";
-                        echo "<td> $i</td>";
+                        echo "<td> $i.</td>";
                         echo "<td> $uusername </td>";
 
                         // Only the super admin can do the action for admin 
@@ -56,9 +59,6 @@
                             echo " <a class='btn btn-success fw-bold me-2' data-bs-toggle='modal'   data-bs-target='#editModel$uid'><i class='bi bi-pencil-square'></i>&nbsp; Edit</a>";
                             echo "<a href='../../action/delete.php?id=$uid&table_name=user' class='btn btn-danger fw-bold'><i class='bi bi-trash'></i>&nbsp;Delete </a>";
                             echo "</td>";
-                        } else {
-
-                            echo "<td></td>";
                         }
 
                         echo "</tr>";
@@ -117,7 +117,7 @@
                         $role = $row['role'];
 
                         echo "<tr>";
-                        echo "<td> $i</td>";
+                        echo "<td> $i.</td>";
                         echo "<td> $uusername </td>";
                         echo "<td> $uphone </td>";
                         echo "<td>";

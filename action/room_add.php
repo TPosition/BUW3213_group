@@ -7,17 +7,17 @@ $room_type = $bedding = "";
 
 
 // Processing form data when form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST["room_type"]) && isset($_POST["bedding"])) {
 
     $room_type = $_POST["room_type"];
     $bedding = $_POST["bedding"];
-    $username = null;
+    $username = 'Null';
     $status = "Free";
 
     // Check input errors before inserting in database
     if (!empty($room_type) && !empty($bedding)) {
         // Prepare an insert statement
-        $sql = "INSERT INTO room (room_type, bedding, username, status ) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO room (room_type, bedding, booked_by_username, status ) VALUES (?, ?, ?, ?)";
 
 
         if ($stmt = mysqli_prepare($link, $sql)) {
