@@ -44,7 +44,7 @@ include_once('../../action/reservation_form.php');
 
                 <div class="form-group mb-3 <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
                     <label for="inputName">Name:</label>
-                    <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Your Name" value="<?php echo $name ?>" required>
+                    <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Your Name" value="<?php echo $name ?>" pattern="[A-Za-z]{1,255}" required>
                 </div>
 
                 <div class="form-group mb-3 <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
@@ -89,11 +89,13 @@ include_once('../../action/reservation_form.php');
                 <div class="form-group mb-3 <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
                     <label for="inputCheckIn">Check In Date</label>
                     <input type="date" class="form-control" id="inputCheckIn" name="inputCheckIn" value="<?php echo $check_in_date; ?>" required>
+                    <span class="help-block"><?php echo $checkIn_err; ?></span>
                 </div>
 
                 <div class="form-group mb-3 <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
                     <label for="inputCheckOut">Check Out Date</label>
                     <input type="date" class="form-control" id="inputCheckOut" name="inputCheckOut" value="<?php echo $check_out_date; ?>" required>
+                    <span class="help-block"><?php echo $checkOut_err; ?></span>
                 </div>
 
                 <div class="d-grid gap-2">
