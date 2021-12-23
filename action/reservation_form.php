@@ -8,7 +8,8 @@ $result_bed = mysqli_query($link, $sql_bed);
 
 // Define variables and initialize with empty values
 $username = $name = $email = $phone  = $bedding = $meal = $check_in_date = $check_out_date = "";
-$email_err = $phone_err = "";
+$email_err = $phone_err = $checkIn_err = $checkOut_err = "";
+$today = date('Y-m-d');
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,9 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST["inputName"]);
 
     // Validate email address
-    if (empty(trim($_POST["inputEmail"]))) {
-        $email_err = "Please enter a email addresss.";
-    } else if (!filter_var(trim($_POST["inputEmail"]), FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var(trim($_POST["inputEmail"]), FILTER_VALIDATE_EMAIL)) {
         $email_err = "Invalid email address";
     } else {
         $email = trim($_POST["inputEmail"]);
@@ -31,12 +30,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = trim($_POST["inputPhoneNo"]);
     $bedding = trim($_POST["inputBedding"]);
     $meal = trim($_POST["inputMeal"]);
-    $check_in_date = trim($_POST["inputCheckIn"]);
-    $check_out_date = trim($_POST["inputCheckOut"]);
+
+    if ($_POST["inputCheckIn"] >= $today){
+        $check_in_date = trim($_POST["inputCheckIn"]);
+    } else {
+        $checkIn_err = "Invalid Check In Date";
+    }
+    
+    if ($_POST["inputCheckOut"] >= $_POST["inputCheckIn"]){
+        $check_out_date = trim($_POST["inputCheckOut"]);
+    } else {
+        $checkOut_err = "Invalid Check Out Date";
+    }
+
     $date =  date('Y-m-d H:i:s');
     $status = 'Not Confirmed';
 
-    if (empty($email_err) && empty($phone_err)) {
+    if (empty($email_err) && empty($phone_err) && empty($checkIn_err) && empty($checkOut_err)) {
 
         $room_status = "UPDATE room SET status = 'Not Free', booked_by_username = '$username' WHERE id = '$bedding' ";
         $room_status_update = mysqli_query($link,$room_status);
@@ -76,9 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Close connection
         mysqli_close($link);
-    } else {
-        header("location: index.php");
-        exit();
-    }
+    } 
     
 }
