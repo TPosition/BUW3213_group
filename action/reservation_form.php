@@ -48,9 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($email_err) && empty($phone_err) && empty($checkIn_err) && empty($checkOut_err)) {
 
-        $room_status = "UPDATE room SET status = 'Not Free', booked_by_username = '$username' WHERE id = '$bedding' ";
-        $room_status_update = mysqli_query($link,$room_status);
-
         // Prepare a INSERT statement to update user's input into database
         $sql = "INSERT INTO room_booked (username, name, email, phone, room_id, meal , check_in, check_out, status, timestamp ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         if ($stmt = mysqli_prepare($link, $sql)) {
