@@ -34,13 +34,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_POST["inputCheckIn"] >= $today){
         $check_in_date = trim($_POST["inputCheckIn"]);
     } else {
-        $checkIn_err = "Invalid Check In Date";
+        $checkIn_err = "Invalid Check In Date. The Check In Date should be today or the day after today.";
     }
     
     if ($_POST["inputCheckOut"] >= $_POST["inputCheckIn"]){
         $check_out_date = trim($_POST["inputCheckOut"]);
     } else {
-        $checkOut_err = "Invalid Check Out Date";
+        $checkOut_err = "Invalid Check Out Date. The Check Out Date should be the day after Check In Date.";
     }
 
     $date =  date('Y-m-d H:i:s');
