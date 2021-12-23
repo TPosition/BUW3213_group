@@ -11,7 +11,9 @@ include_once('../../action/user_edit.php');
                 <h4 class="modal-title" id="myModalLabel">Edit User</h4>
             </div>
             <!--  check the role show different edit form -->
-            <?php if ($role == "admin") { ?>
+
+            <?php
+            if ($role == 'admin' || $role == 'super admin') { ?>
                 <form method="post" action="edit.php">
                     <div class="modal-body">
                         <div class="form-group">
@@ -22,12 +24,12 @@ include_once('../../action/user_edit.php');
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="new_password" value="<?php echo $user_password; ?>" class="form-control" placeholder="Leave it Blank if not changed" pattern=".{6,}">
+                            <input type="password" name="new_password" value="" class="form-control" pattern=".{6,}">
+                            <small class="form-text text-muted">*Leave it Blank if not changed</small>
                         </div>
                     </div>
 
                     <!-- user id and role  -->
-                    <input type="hidden" name="current_password" value="<?php echo $upassowrd; ?>" class="form-control" />
                     <input type="hidden" name="id" value="<?php echo $uid; ?>" class="form-control" />
                     <input type="hidden" name="role" value="<?php echo $role; ?>" class="form-control" />
                     <div class="modal-footer">
@@ -58,20 +60,18 @@ include_once('../../action/user_edit.php');
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="new_password" value="<?php echo $user_password; ?>" class="form-control" placeholder="Leave it Blank if not changed" pattern=".{6,}">
+                            <input type="password" name="new_password" value="" class="form-control" pattern=".{6,}">
+                            <small class="form-text text-muted">*Leave it Blank if not changed</small>
                         </div>
                     </div>
 
-                    <!-- user id, password, role  -->
+                    <!-- user id, role  -->
                     <input type="hidden" name="id" value="<?php echo $uid; ?>" class="form-control" />
-                    <input type="hidden" name="current_password" value="<?php echo $upassowrd; ?>" class="form-control" />
                     <input type="hidden" name="role" value="<?php echo $role; ?>" class="form-control" />
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                 </form>
-
-
             <?php } ?>
         </div>
     </div>

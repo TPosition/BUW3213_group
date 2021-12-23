@@ -12,27 +12,23 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
 // Define variables and initialize with empty values
 $username = $password = "";
-$username_err = $password_err = "";
+$username_password_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Check if username is empty
-    if (empty(trim($_POST["username"]))) {
-        $username_err = "Please enter username.";
-    } else {
+    // Check username 
+    if (!empty(trim($_POST["username"]))) {
         $username = trim($_POST["username"]);
     }
 
-    // Check if password is empty
-    if (empty(trim($_POST["password"]))) {
-        $password_err = "Please enter your password.";
-    } else {
+    // Check password 
+    if (!empty(trim($_POST["password"]))) {
         $password = trim($_POST["password"]);
     }
 
     // Validate credentials
-    if (empty($username_err) && empty($password_err)) {
+    if (!empty($username) && !empty($password)) {
         // Prepare a select statement
         $sql = "SELECT id, username, password, role FROM user WHERE username = ?";
 
@@ -63,8 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["role"] = $role;
                             $_SESSION["username"] = $username;
 
-
-                            if ($role == "admin") {
+                            // Different role redirect to different pages
+                            if ($role == "admin" || $role == 'super admin') {
                                 // Redirect user to dashboard page
                                 header("location: ../dashboard/index.php");
                                 exit;
@@ -74,13 +70,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 exit;
                             }
                         } else {
-                            // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
+                            // Display an error message if username or password is not valid
+                            $username_password_err = "Username and password mismatch.";
                         }
                     }
                 } else {
-                    // Display an error message if username doesn't exist
-                    $username_err = "No account found with that username.";
+                    // Display an error message if username or password is not valid
+                    $username_password_err = "Username and password mismatch.";
                 }
             } else {
                 echo "Oops! Something went wrong. Please try again later.";

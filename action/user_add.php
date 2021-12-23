@@ -12,8 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($user_role == 'admin') {
 
-        $username = $_POST["admin_username"];
-        $password = $_POST["admin_password"];
+        $username = trim($_POST["admin_username"]);
+        $password = trim($_POST["admin_password"]);
 
 
         // begin to check username is not taken in database
@@ -32,8 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 mysqli_stmt_store_result($stmt);
 
                 if (mysqli_stmt_num_rows($stmt) == 1) {
-                    echo "<script>alert('This username is already taken');  
-                    window.location='index.php'</script>";
+                    echo "<script>
+                    
+                            alert('This username is already taken');  
+                             window.location='index.php'
+                    
+                        </script>";
                 }
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
@@ -79,10 +83,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
 
-        $username = $_POST["user_username"];
-        $password = $_POST["user_password"];
-        $email = $_POST["user_email"];
-        $phone = $_POST["user_phone"];
+        $username = trim($_POST["user_username"]);
+        $password = trim($_POST["user_password"]);
+        $email = trim($_POST["user_email"]);
+        $phone = trim($_POST["user_phone"]);
 
         // begin to check username is not taken in database
         $sql = "SELECT id FROM user WHERE username = ?";

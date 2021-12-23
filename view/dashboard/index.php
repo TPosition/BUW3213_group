@@ -3,8 +3,9 @@ include_once('../../config.php');
 include_once('../../action/check_login.php');
 
 
+
 // To double check to role must be admin when direct to admin panel
-if ($_SESSION["role"] == 'admin') {
+if ($_SESSION["role"] == 'admin' || $_SESSION["role"] == 'super admin') {
 ?>
 
 
@@ -37,8 +38,10 @@ if ($_SESSION["role"] == 'admin') {
 <?php
 } else if ($_SESSION["role"] == 'user') {
     header("location: ../home/index.php");
+    exit;
 } else {
     header("location: ../login/index.php");
+    exit;
 }
 
 ?>

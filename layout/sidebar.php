@@ -1,5 +1,5 @@
-<nav id="sidebarMenu" class="admin-bg-primary navbar col-md-3 col-lg-2 d-none d-md-block sidebar collapse">
-    <div class="position-sticky pt-3">
+<nav id="sidebarMenu" class="admin-bg-primary col-md-3 col-lg-2 navbar sidebar collapse align-items-start">
+    <div class="position-sticky pt-3" style="top:3em">
         <ul class="nav nav-pills flex-column">
             <?php
             class item
@@ -38,11 +38,17 @@
 
             $item5 = new item();
             $item5->href = '../user/index.php';
-            $item5->name = 'User';
-            $item5->icon = ' <i class="bi bi-person"></i>';
+            $item5->name = 'User Management';
+            $item5->icon = ' <i class="bi bi-person-lines-fill"></i>';
             $item5->isDir = $uri == URI_VIEW . 'user/index.php' ? true : false;
 
-            $items = array($item1, $item2, $item3, $item4, $item5);
+            $item6 = new item();
+            $item6->href = '../profile/index.php';
+            $item6->name = 'User Profile';
+            $item6->icon = ' <i class="bi bi-person-circle"></i>';
+            $item6->isDir = $uri == URI_VIEW . 'profile/index.php' ? true : false;
+
+            $items = array($item1, $item2, $item3, $item4, $item5, $item6);
             foreach ($items as $item) {
                 $isActive = $item->isDir ? 'active' : '';
                 echo "<li class='nav-item'>
