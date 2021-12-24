@@ -33,13 +33,14 @@ include_once('../../action/booking_add.php');
                     <div class="form-group">
                         <label>Phone</label>
                         <input name="phone" value="<?php echo $phone; ?>" class="form-control" placeholder="Enter a phone number" pattern="[0-9]{10,11}">
-                        <option value="" disabled selected>-- Select the room --</option>
+
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Room Type</label>
                         <select name="roomType" id="roomType" class="form-select" aria-label="Default select example">
+                            <option value="" disabled selected>-- Select the room --</option>
                         </select>
                     </div>
                 </div>
@@ -92,6 +93,7 @@ include_once('../../action/booking_add.php');
 
     // Define an empty array to fetch FREE ROOM from database
     let room_data = [];
+    let room_data_selected = [];
     <?php
     // Prepare a SELECT statement to get the FREE ROOM data
     $sql = "SELECT * FROM room WHERE id IN (SELECT min(id) FROM room WHERE status='Free' GROUP BY room_type, bedding)";

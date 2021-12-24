@@ -44,45 +44,22 @@ include_once('../../action/booking_edit.php');
                         <input name=" booking_phone" value="<?php echo $rbook_phone ?>" class="form-control" placeholder="Enter a phone number" pattern="[0-9]{10,11}" required />
                     </div>
                 </div>
+
+
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Room Type</label>
-
-                        <select name="booking_roomid" class="form-select" aria-label="Default select example">
-
-
-
-                            <?php
-
-                            // get the room type from room database and show in the option 
-                            if (isset($rbook_roomid)) {
-                                $sql = "SELECT * FROM room";
-
-                                $result_room = mysqli_query($link, $sql);
-                                if (mysqli_num_rows($result_room) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result_room)) {
-                                        $room_type = $row['room_type'];
-                                        $room_id = $row['id'];
-                                        $room_status = $row['status'];
-                                        if ($rbook_roomid == $room_id) {
-                                            echo  "<option value='$room_id' selected>$room_type</option>";
-                                        } else if ($room_status == 'Free') {
-                                            echo " <option value='$room_id'>$room_type</option>";
-                                        }
-                                    }
-                                }
-                            }
-                            ?>
-
-
-
-
-
-
-                        </select>
-
+                        <input name="booking_roomType" value="<?php echo $rbook_roomtype ?>" class="form-control" readonly />
                     </div>
                 </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Bedding</label>
+                        <input name="booking_room_id" value="<?php echo $rbook_bedding ?>" class="form-control" readonly />
+                    </div>
+                </div>
+
+
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Meal</label>
@@ -119,7 +96,7 @@ include_once('../../action/booking_edit.php');
 </div>
 
 <script>
-    //remove duplicate meal option 
+    // Remove duplicate of meal option
     $(".form-select option").each(function() {
         $(this).siblings('[value="' + this.value + '"]').remove();
     });
