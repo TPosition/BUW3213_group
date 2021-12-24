@@ -60,7 +60,7 @@ include_once('../../action/reservation_confirm.php');
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Room Type</label>
+                        <label>Bedding</label>
                         <input name="book_bedding" value="<?php echo $book_bedding ?>" class="form-control" readonly />
                     </div>
                 </div>
@@ -90,7 +90,7 @@ include_once('../../action/reservation_confirm.php');
                 </div>
 
                 <!-- identify the take which room table id in action sql code -->
-                <input type='hidden' name='room_id' value='$book_roomid' class='form-control' />
+                <input type='hidden' name='room_id' value="<?php echo $book_roomid ?>" class='form-control' />
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
