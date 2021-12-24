@@ -132,6 +132,7 @@ include_once('../../action/check_login.php');
 
     <!-- Import Footer -->
     <?php include_once(DIR_LAYOUT . 'footer.php'); ?>
+    <?php include_once('resetPassword.php'); ?>
     <?php include_once(DIR_SYSTEM . 'globaljs.php'); ?>
 </body>
 

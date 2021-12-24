@@ -44,7 +44,7 @@ include_once('../../action/reservation_form.php');
 
                 <div class="form-group mb-3 <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
                     <label for="inputName">Name:</label>
-                    <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Your Name" value="<?php echo $name ?>" pattern="[A-Za-z]{1,255}" required>
+                    <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Your Name" value="<?php echo $name ?>" pattern="[A-Za-z\sa-z]{1,255}" required>
                 </div>
 
                 <div class="form-group mb-3 <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
@@ -108,6 +108,7 @@ include_once('../../action/reservation_form.php');
 
     <!-- Import Footer -->
     <?php include_once(DIR_LAYOUT . 'footer.php'); ?>
+    <?php include_once('resetPassword.php'); ?>
     <?php include_once(DIR_SYSTEM . 'globaljs.php'); ?>
 </body>
 
