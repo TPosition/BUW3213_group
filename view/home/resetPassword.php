@@ -12,18 +12,19 @@ include_once('../../action/reset_password.php');
 
                 <h4 class="modal-title" id="resetPasswordLabel">Reset Password</h4>
             </div>
-            <form method="post" action="resetPassword.php">
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
                 <div class="modal-body">
                     <div class="form-group">
                         <label>New Password</label>
-                        <input type="password" id="new_password" name="new_password" value="<?php echo $new_password; ?>" class="form-control" placeholder="Enter Password" pattern=".{6,}" placeholder="Leave it Black if not changed" required />
+                        <input type="password" id="new_password" name="new_password" class="form-control" placeholder="Enter Password" pattern=".{6,}" required />
                     </div>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                </div>
             </form>
 
         </div>

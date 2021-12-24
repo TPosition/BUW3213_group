@@ -1,7 +1,9 @@
 <?php
-include_once('../../config.php');
 // Initialize the session
 session_start();
+
+include_once('../../config.php');
+
 ?>
 
 

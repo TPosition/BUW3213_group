@@ -1,20 +1,16 @@
 <?php
 // Include config file
 include_once('../../config.php');
-// include_once('../../action/check_login.php');
 
 
-// Define variables and initialize with empty values
-$new_password =  "";
+
 
 
 // Processing form data when form is submitted
-if (isset($_POST["new_password"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-    $new_password = trim($_POST["new_password"]);
-
-
+    $new_password = ($_POST["new_password"]);
 
     // Prepare an update statement
     $sql = "UPDATE user SET password = ? WHERE id = ?";
@@ -31,7 +27,10 @@ if (isset($_POST["new_password"])) {
         if (mysqli_stmt_execute($stmt)) {
             // Password updated successfully. Destroy the session, and redirect to login page
             session_destroy();
-            header("location: ../login/index.php");
+            echo "<script>  
+                alert('Update Successful');  
+                window.location='../login/index.php'
+                 </script>";
             exit();
         } else {
             echo "Oops! Something went wrong. Please try again later.";
@@ -40,6 +39,7 @@ if (isset($_POST["new_password"])) {
         // Close statement
         mysqli_stmt_close($stmt);
     }
+
 
 
     // Close connection
