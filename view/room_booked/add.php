@@ -20,7 +20,7 @@ include_once('../../action/booking_add.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Name</label>
-                        <input name="name" value="<?php echo $name; ?>" class="form-control" placeholder="Enter a name" required />
+                        <input name="name" value="<?php echo $name; ?>" class="form-control" placeholder="Enter a name" pattern="[A-Za-z\sa-z]{1,255}" required />
                     </div>
                 </div>
                 <div class="modal-body">
