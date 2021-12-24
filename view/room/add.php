@@ -16,13 +16,19 @@ include_once('../../action/room_add.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Room Type</label>
-                        <input name="room_type" value="<?php echo $room_type; ?>" class="form-control" placeholder="Enter Room type" required>
+                        <input name="room_type" class="form-control" placeholder="Enter Room type" required>
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Bedding</label>
-                        <input name="bedding" value="<?php echo $bedding; ?>" class="form-control" placeholder="Enter Bedding" required>
+                        <input name="bedding" class="form-control" placeholder="Enter Bedding" required>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" name="price" class="form-control" placeholder="Enter price" required>
                     </div>
                 </div>
 

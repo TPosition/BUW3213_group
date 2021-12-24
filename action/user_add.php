@@ -4,6 +4,8 @@ include_once('../../config.php');
 
 // Define variables and initialize with empty values
 $username = $phone = $email = $password = "";
+
+
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
