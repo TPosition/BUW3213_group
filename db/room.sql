@@ -66,7 +66,7 @@ INSERT INTO `room` (`id`, `room_type`, `bedding`, `price`, `status`, `booked_by_
 (23, 'Luxury', 'King', 170, 'Free', 'Null'),
 (24, 'Luxury', 'King', 170, 'Free', 'Null'),
 (25, 'Deluxe', 'Single', 170, 'Free', 'Null'),
-(26, 'Deluxe', 'Single', 0, 'Free', 'Null'),
+(26, 'Deluxe', 'Single', 170, 'Free', 'Null'),
 (27, 'Deluxe', 'Double', 0, 'Free', 'Null'),
 (28, 'Deluxe', 'Double', 0, 'Free', 'Null'),
 (29, 'Deluxe', 'Queen', 0, 'Free', 'Null'),
