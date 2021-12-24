@@ -55,7 +55,7 @@ include_once('../../action/booking_edit.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Bedding</label>
-                        <input name="booking_room_id" value="<?php echo $rbook_bedding ?>" class="form-control" readonly />
+                        <input name="booking" value="<?php echo $rbook_bedding ?>" class="form-control" readonly />
                     </div>
                 </div>
 
@@ -81,10 +81,15 @@ include_once('../../action/booking_edit.php');
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Check In</label>
+                        <label>Check Out</label>
                         <input type="date" name="booking_checkout" value="<?php echo $rbook_checkout ?>" class="form-control" required />
                     </div>
                 </div>
+
+
+
+                <input name="room_id" type="hidden" value="<?php echo $rbook_roomid ?>" class="form-control" required />
+
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
