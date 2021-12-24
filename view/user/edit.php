@@ -48,7 +48,7 @@ include_once('../../action/user_edit.php');
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Phone No</label>
-                            <input name="phone" value="<?php echo $uphone; ?>" class="form-control" placeholder="Enter Phone Number" pattern="[0-9]{10,11}" required>
+                            <input type="number" name="phone" value="<?php echo $uphone; ?>" class="form-control" placeholder="Enter Phone Number" pattern="[0-9]{10,11}" required>
                         </div>
                     </div>
                     <div class="modal-body">
