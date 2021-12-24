@@ -16,9 +16,10 @@ if (isset($_POST["booking_id"])) {
 
     $book_username = $_POST["booking_username"];
     $book_name = $_POST["booking_name"];
+    $book_meal = $_POST["booking_meal"];
     $book_checkin = $_POST["booking_checkin"];
     $book_checkout = $_POST["booking_checkout"];
-    $book_total = "200";
+
 
     $room_id = $_POST['room_id'];
     $room_status = "Not Free";
@@ -27,7 +28,7 @@ if (isset($_POST["booking_id"])) {
 
     // Check the status
     if (!empty($booking_status)) {
-
+        // Change the status of booking 
         $sql_room_booked = "UPDATE room_booked SET status=? WHERE id=?";
 
         if ($stmt_one = mysqli_prepare($link, $sql_room_booked)) {
@@ -37,10 +38,41 @@ if (isset($_POST["booking_id"])) {
             // Set parameters
             $param_status = $booking_status;
             $param_id =  $booking_id;
+            // Execute the statement one 
+            mysqli_stmt_execute($stmt_one);
 
 
             // Check the status, if status is confirmed update the room and payment table
             if ($booking_status == 'Confirmed') {
+
+                // To get the price of room
+                $sql_room_price = "SELECT * FROM room WHERE id = '$room_id'";
+                $result_room_price = mysqli_query($link, $sql_room_price);
+
+                if (mysqli_num_rows($result_room_price) > 0) {
+
+                    while ($row = mysqli_fetch_assoc($result_room_price)) {
+
+                        $room_price = $row['price'];
+                    }
+                }
+                // End get room price
+
+
+                // To get the price of meal
+                $sql_meal_price = "SELECT * FROM meal WHERE meal_name = '$book_meal'";
+                $result_meal_price = mysqli_query($link, $sql_meal_price);
+
+                if (mysqli_num_rows($result_meal_price) > 0) {
+
+                    while ($row = mysqli_fetch_assoc($result_meal_price)) {
+
+                        $meal_price = $row['price'];
+                    }
+                }
+                // End get meal price
+
+
 
                 // Prepare an update and insert statement for room_booked and payment database
                 $sql_room = "UPDATE room SET status=?, booked_by_username=? WHERE id=?";
@@ -55,7 +87,7 @@ if (isset($_POST["booking_id"])) {
                     $param_username =  $book_username;
                     $param_checkin =  $book_checkin;
                     $param_checkout =  $book_checkout;
-                    $param_total =  $book_total;
+                    $param_total =  $room_price + $meal_price;
                     $param_id =  $booking_id;
 
 
@@ -85,10 +117,11 @@ if (isset($_POST["booking_id"])) {
                 }
 
                 // if statement one execute successful 
-            } else if (mysqli_stmt_execute($stmt_one)) {
-                header("location: index.php");
-                exit();
             }
+
+            header("location: index.php");
+            exit();
+
             //Close statement one 
             mysqli_stmt_close($stmt_one);
         }

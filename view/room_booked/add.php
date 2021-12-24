@@ -33,6 +33,7 @@ include_once('../../action/booking_add.php');
                     <div class="form-group">
                         <label>Phone</label>
                         <input name="phone" value="<?php echo $phone; ?>" class="form-control" placeholder="Enter a phone number" pattern="[0-9]{10,11}">
+                        <option value="" disabled selected>-- Select the room --</option>
                     </div>
                 </div>
                 <div class="modal-body">
@@ -46,6 +47,7 @@ include_once('../../action/booking_add.php');
                     <div class="form-group">
                         <label>Bedding</label>
                         <select name="bedding_room_id" id="bedding_room_id" class="form-select" aria-label="Default select example">
+                            <option value="" disabled selected>-- Select the room for choosing the bedding --</option>
                         </select>
 
                     </div>
@@ -54,11 +56,13 @@ include_once('../../action/booking_add.php');
                     <div class="form-group">
                         <label>Meal</label>
                         <select name="meal" class="form-select" aria-label="Default select example">
-                            <option value="breakfast">breakfast</option>
-                            <option value="lunch">lunch</option>
-                            <option value="dinner">dinner</option>
-                            <option value="half board">half board </option>
-                            <option value="full board">full board </option>
+                            <option value="" disabled selected>-- Select the meal --</option>
+                            <option value="No Meal">Room Only</option>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                            <option value="Half Board">Half Board (Breakfast + Lunch)</option>
+                            <option value="Full Board">Full Board (Breakfast + Lunch + Dinner)</option>
                         </select>
                     </div>
                 </div>
