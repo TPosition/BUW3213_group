@@ -29,6 +29,7 @@ include_once('../../action/room_add.php');
                     <div class="form-group">
                         <label>Price</label>
                         <input type="number" name="price" class="form-control" placeholder="Enter price" required>
+                        <span class="help-block"><?php echo $price_err; ?></span>
                     </div>
                 </div>
 
