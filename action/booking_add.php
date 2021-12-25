@@ -4,6 +4,7 @@ include_once('../../config.php');
 
 // Define variables and initialize with empty values
 $username = $name = $email = $phone = $meal = $checkin = $checkout =  "";
+$checkIn_err = $checkOut_err = '';
 
 
 
@@ -23,15 +24,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = $_POST["phone"];
     $room_id = $_POST["bedding_room_id"];
     $meal = $_POST["meal"];
-    $checkin = $_POST["checkin"];
-    $checkout = $_POST["checkout"];
+    $today = date('Y-m-d');
+
+    if ($_POST["checkin"] >= $today){
+        $check_in_date = trim($_POST["checkin"]);
+    } else {
+        $checkIn_err = "Invalid Check In Date. The Check In Date should be today or the day after today.";
+    }
+    
+    if ($_POST["checkout"] >= $_POST["checkin"]){
+        $check_out_date = trim($_POST["checkout"]);
+    } else {
+        $checkOut_err = "Invalid Check Out Date. The Check Out Date should be the day after Check In Date.";
+    }
+
     $date =  date('Y-m-d H:i:s');
     $status = 'Confirmed';
 
     $room_status = "Not Free";
 
     // Check input errors before inserting in database
-    if (!empty($username) && !empty($name) && !empty($email) && !empty($phone) && !empty($room_id) && !empty($meal) & !empty($checkin) && !empty($checkout)) {
+    if (!empty($username) && !empty($name) && !empty($email) && !empty($phone) && !empty($room_id) && !empty($meal) & !empty($checkIn_err) && !empty($checkOut_err)) {
         // Prepare an insert statement
         $sql = "INSERT INTO room_booked (username, name, email, phone, room_id, meal , check_in, check_out, status, timestamp ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $sql_room = "UPDATE room SET status=?, booked_by_username=? WHERE id=?";

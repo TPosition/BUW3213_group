@@ -71,12 +71,14 @@ include_once('../../action/booking_add.php');
                     <div class="form-group">
                         <label>Check In</label>
                         <input type="date" name="checkin" value="<?php echo $checkin; ?>" class="form-control" />
+                        <span class="help-block"><?php echo $checkIn_err; ?></span>
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Check In</label>
                         <input type="date" name="checkout" value="<?php echo $checkout; ?>" class="form-control" />
+                        <span class="help-block"><?php echo $checkOut_err; ?></span>
                     </div>
                 </div>
 
