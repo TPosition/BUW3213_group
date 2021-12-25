@@ -2,10 +2,6 @@
 // Include config file
 include_once('../../config.php');
 
-
-
-
-
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
