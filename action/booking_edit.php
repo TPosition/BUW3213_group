@@ -1,7 +1,7 @@
 <?php
 // Include config file
 include_once('../../config.php');
-
+$checkIn_err = $checkOut_err = '';
 
 
 
@@ -15,13 +15,26 @@ if (isset($_POST["booking_id"])) {
     $rbook_phone = $_POST["booking_phone"];
     $room_id = $_POST["room_id"];
     $rbook_meal = $_POST["booking_meal"];
-    $rbook_checkin = $_POST["booking_checkin"];
-    $rbook_checkout = $_POST["booking_checkout"];
+    $today = date('Y-m-d');
+
+    if ($_POST["booking_checkin"] >= $today){
+        $rbook_checkin = $_POST["booking_checkin"];
+    } else {
+        $checkIn_err = "Invalid Check In Date. The Check In Date should be today or the day after today.";
+    }
+    
+    if ($_POST["booking_checkout"] >= $_POST["booking_checkin"]){
+        $rbook_checkout = $_POST["booking_checkout"];
+    } else {
+        $checkOut_err = "Invalid Check Out Date. The Check Out Date should be the day after Check In Date.";
+    }
+    
+   
 
 
 
     // Check input errors before inserting in database
-    if (!empty($rbook_username) && !empty($rbook_name) && !empty($rbook_email) && !empty($rbook_phone) && !empty($room_id) && !empty($rbook_meal) && !empty($rbook_checkin) && !empty($rbook_checkout)) {
+    if (!empty($rbook_username) && !empty($rbook_name) && !empty($rbook_email) && !empty($rbook_phone) && !empty($room_id) && !empty($rbook_meal) && !empty($checkIn_err) && !empty($checkOut_err)) {
         // Prepare an update statement
         $sql = "UPDATE room_booked SET username=?, name=?, email=?, phone=?, room_id=?, meal=? , check_in=?, check_out=? WHERE id=?";
 
