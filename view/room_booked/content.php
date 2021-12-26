@@ -78,8 +78,6 @@
 					echo "<td>$rbook_checkout</td>";
 					echo "<td>$rbook_status</td>";
 
-
-
 					echo "<td>";
 					echo " <a class='btn btn-success fw-bold me-2' data-bs-toggle='modal' data-bs-target='#editModel$rbook_id'><i class='bi bi-pencil-square'></i>&nbsp; Edit</a>";
 					echo "<a href='../../action/delete.php?id=$rbook_id&table_name=room_booked' class='btn btn-danger fw-bold'><i class='bi bi-trash'></i>&nbsp;Delete </a>";
@@ -89,7 +87,6 @@
 					echo include('edit.php');
 					$i++;
 				}
-
 
 				echo "</tbody>";
 				echo "</table>";

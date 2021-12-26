@@ -5,7 +5,6 @@ include_once('../../action/booking_edit.php');
 
 ?>
 
-
 <div class="modal fade" id="editModel<?php echo $rbook_id ?>" tabindex="-1" role="dialog" aria-labelledby="editModelLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -45,7 +44,6 @@ include_once('../../action/booking_edit.php');
                     </div>
                 </div>
 
-
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Room Type</label>
@@ -80,7 +78,6 @@ include_once('../../action/booking_edit.php');
                         <input name="booking_room_id" value="<?php echo $rbook_bedding ?>" class="form-control" readonly />
                     </div>
                 </div>
-
 
                 <div class="modal-body">
                     <div class="form-group">

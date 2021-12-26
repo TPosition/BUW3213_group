@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $bedding = trim($_POST["inputBedding"]);
     $meal = trim($_POST["inputMeal"]);
 
+    // Validate check in and check out date
     if ($_POST["inputCheckIn"] >= $today){
         $check_in_date = trim($_POST["inputCheckIn"]);
     } else {
