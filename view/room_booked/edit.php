@@ -49,11 +49,7 @@ include_once('../../action/booking_edit.php');
                         <label>Room Type</label>
 
                         <select name="booking_roomid" class="form-select" aria-label="Default select example">
-
-
-
                             <?php
-
                             // get the room type from room database and show in the option 
                             if (isset($rbook_roomid)) {
                                 $sql = "SELECT * FROM room";
@@ -73,14 +69,7 @@ include_once('../../action/booking_edit.php');
                                 }
                             }
                             ?>
-
-
-
-
-
-
                         </select>
-
                     </div>
                 </div>
                 <div class="modal-body">
@@ -100,12 +89,14 @@ include_once('../../action/booking_edit.php');
                     <div class="form-group">
                         <label>Check In</label>
                         <input type="date" name="booking_checkin" value="<?php echo $rbook_checkin ?>" class="form-control" required />
+                        <span class="help-block"><?php echo $checkIn_err; ?></span>
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Check In</label>
+                        <label>Check Out</label>
                         <input type="date" name="booking_checkout" value="<?php echo $rbook_checkout ?>" class="form-control" required />
+                        <span class="help-block"><?php echo $checkOut_err; ?></span>
                     </div>
                 </div>
 
