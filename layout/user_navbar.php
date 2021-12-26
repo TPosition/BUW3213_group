@@ -12,7 +12,7 @@
 
 
         <div class="col-md-4 text-end">
-            <?php if (isset($_SESSION["role"]) == 'user' && isset($_SESSION["username"])) { ?>
+            <?php if (!empty($_SESSION["username"])) { ?>
                 <h5>Welcome, <?php echo $_SESSION["username"] ?> !</h5>
                 <a class='btn btn-outline-primary me-2 mt-2' data-bs-toggle='modal' data-bs-target='#resetPasswordModel'> Reset Password</a>
                 <a href="../../action/logout.php"> <button type="button" class="btn btn-primary mt-2">Log out</button></a>

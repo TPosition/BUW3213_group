@@ -9,7 +9,7 @@ include_once('../../action/reservation_confirm.php');
         <div class="modal-content">
             <div class="modal-header">
 
-                <h4 class="modal-title" id="editModalLabel">Edit Booking</h4>
+                <h4 class="modal-title" id="editModalLabel">Booking Action</h4>
             </div>
             <form method="post" action="reservation.php">
                 <div class="modal-body">
@@ -18,6 +18,7 @@ include_once('../../action/reservation_confirm.php');
                         <select name="booking_status" class="form-select" aria-label="Default select example">
                             <option value="<?php echo $book_status ?>" selected><?php echo $book_status ?></option>
                             <option value="Confirmed">Confirmed</option>
+                            <option value="Rejected">Rejected</option>
                         </select>
                     </div>
                 </div>
@@ -54,43 +55,18 @@ include_once('../../action/reservation_confirm.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Room Type</label>
-                        <input name=" booking_phone" value="<?php echo $book_roomtype ?>" class="form-control" readonly />
+                        <input name="book_roomtype" value="<?php echo $book_roomtype ?>" class="form-control" readonly />
                     </div>
                 </div>
-                <?php
-
-                // based on room_id to display the room type and bedding value
-                $sql_room_id = "SELECT room_type, bedding  FROM room WHERE id = $book_roomid";
-
-                $result_room = mysqli_query($link, $sql_room_id);
-                if (mysqli_num_rows($result_room) > 0) {
-                    while ($row = mysqli_fetch_assoc($result_room)) {
-
-                        $roomtype = $row['room_type'];
-                        $bedding = $row['bedding'];
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Bedding</label>
+                        <input name="book_bedding" value="<?php echo $book_bedding ?>" class="form-control" readonly />
+                    </div>
+                </div>
 
 
-                        echo `<div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Room Type</label>
-                                         <input name=" booking_phone" value="$roomtype" class="form-control" readonly />
-                                    </div>
-                                 </div>;`;
-                        echo `<div class="modal-body">
-                                     <div class="form-group">
-                                        <label>Room Type</label>
-                                        <input name=" booking_phone" value="$bedding" class="form-control" readonly />
-                                      </div>
-                                  </div>`;
 
-
-                        //  room id used to update the status of room when confimed 
-
-                        echo  "<input type='hidden' name='room_id' value='$book_roomid' class='form-control' />";
-                    }
-                }
-
-                ?>
 
                 <div class="modal-body">
                     <div class="form-group">
@@ -113,7 +89,8 @@ include_once('../../action/reservation_confirm.php');
                     </div>
                 </div>
 
-
+                <!-- identify the take which room table id in action sql code -->
+                <input type='hidden' name='room_id' value="<?php echo $book_roomid ?>" class='form-control' />
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>

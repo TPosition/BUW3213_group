@@ -13,7 +13,7 @@ if (isset($_POST["booking_id"])) {
     $rbook_username = $_POST["booking_username"];
     $rbook_email = $_POST["booking_email"];
     $rbook_phone = $_POST["booking_phone"];
-    $room_id = $_POST["booking_roomid"];
+    $room_id = $_POST["booking_room_id"];
     $rbook_meal = $_POST["booking_meal"];
     $today = date('Y-m-d');
 

@@ -29,7 +29,7 @@ include_once('../../action/booking_edit.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Name</label>
-                        <input name="booking_name" value="<?php echo $rbook_name ?>" class="form-control" placeholder="Enter a name" required />
+                        <input name="booking_name" value="<?php echo $rbook_name ?>" class="form-control" placeholder="Enter a name" pattern="[A-Za-z\sa-z]{1,255}" required />
                     </div>
                 </div>
                 <div class="modal-body">
@@ -44,6 +44,8 @@ include_once('../../action/booking_edit.php');
                         <input name=" booking_phone" value="<?php echo $rbook_phone ?>" class="form-control" placeholder="Enter a phone number" pattern="[0-9]{10,11}" required />
                     </div>
                 </div>
+
+
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Room Type</label>
@@ -72,6 +74,14 @@ include_once('../../action/booking_edit.php');
                         </select>
                     </div>
                 </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Bedding</label>
+                        <input name="booking_room_id" value="<?php echo $rbook_bedding ?>" class="form-control" readonly />
+                    </div>
+                </div>
+
+
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Meal</label>
@@ -110,7 +120,7 @@ include_once('../../action/booking_edit.php');
 </div>
 
 <script>
-    //remove duplicate meal option 
+    // Remove duplicate of meal option
     $(".form-select option").each(function() {
         $(this).siblings('[value="' + this.value + '"]').remove();
     });

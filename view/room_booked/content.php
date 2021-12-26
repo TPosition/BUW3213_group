@@ -14,7 +14,7 @@
 
 
 		// Attempt select query execution
-		$sql = "SELECT * FROM room_booked WHERE status = 'Confirmed'";
+		$sql = "SELECT * FROM room_booked WHERE status = 'Confirmed' || status = 'Rejected'";
 		$i = 1;  // make for sequential number
 		if ($result = mysqli_query($link, $sql)) {
 			if (mysqli_num_rows($result) > 0) {
@@ -31,6 +31,7 @@
 				echo "<th>Meal</th>";
 				echo "<th>Check In</th>";
 				echo "<th>Check Out</th>";
+				echo "<th>Status</th>";
 				echo "<th>Action</th>";
 				echo "</tr>";
 				echo "</thead>";
@@ -48,6 +49,7 @@
 					$rbook_meal = $row['meal'];
 					$rbook_checkin = $row['check_in'];
 					$rbook_checkout = $row['check_out'];
+					$rbook_status = $row['status'];
 					echo "<tr>";
 					echo "<td> $i.</td>";
 					echo "<td>$rbook_name</td>";
@@ -74,6 +76,7 @@
 					echo "<td>$rbook_meal</td>";
 					echo "<td>$rbook_checkin</td>";
 					echo "<td>$rbook_checkout</td>";
+					echo "<td>$rbook_status</td>";
 
 
 

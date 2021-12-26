@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt = mysqli_prepare($link, $sql)) {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
+
             // Set parameters
             $param_username = trim($_POST["username"]);
 
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate phone number
     if (empty(trim($_POST["phone"]))) {
         $phone_err = "Please enter a phone number.";
-    } else if (strlen(trim($_POST["phone"])) <= 10) {
+    } else if (strlen(trim($_POST["phone"])) <= 9) {
         $phone_err = "Invalid phone number";
     } else {
         $phone = trim($_POST["phone"]);
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty(trim($_POST["password"]))) {
         $password_err = "Please enter a password.";
     } elseif (strlen(trim($_POST["password"])) < 6) {
-        $password_err = "Password must have atleast 6 characters.";
+        $password_err = "Password must have at least 6 characters.";
     } else {
         $password = trim($_POST["password"]);
     }
