@@ -36,7 +36,7 @@ include_once('../../action/room_edit.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Price</label>
-                        <input name="price" value="<?php echo $rprice; ?>" class="form-control" min="0" required>
+                        <input type="number" name="price" value="<?php echo $rprice; ?>" class="form-control" min="0" required>
 
                     </div>
                 </div>
