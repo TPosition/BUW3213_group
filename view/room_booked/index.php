@@ -12,7 +12,6 @@ include_once('../../action/check_login.php');
 
 </head>
 
-
 <body>
     <?php include_once(DIR_LAYOUT . 'navbar.php'); ?>
     <div class="container-fluid">

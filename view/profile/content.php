@@ -17,30 +17,21 @@ if (mysqli_num_rows($result) > 0) {
 
 ?>
 
-
 <main class="col-md-9 col-md-10 ms-sm-auto px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom my-4">
         <h1 class="h2">User Profile</h1>
     </div>
 
-
-
-
     <div class="container">
 
         <div class="row d-flex">
 
-
-
             <form action="content.php" method="post">
-
 
                 <div class="form-group my-4">
                     <label>Username</label>
                     <input name="username" value="<?php echo $current_username ?>" class="form-control" required />
                 </div>
-
-
 
                 <div class="form-group">
                     <label>Password</label>
@@ -53,10 +44,7 @@ if (mysqli_num_rows($result) > 0) {
                 <input type="hidden" name="role" value="<?php echo $role; ?>" class="form-control" />
                 <button type="submit" class="btn btn-primary float-end mt-4">Submit</button>
 
-
             </form>
-
         </div>
-
     </div>
 </main>
