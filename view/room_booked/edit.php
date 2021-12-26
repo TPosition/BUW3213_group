@@ -47,29 +47,7 @@ include_once('../../action/booking_edit.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Room Type</label>
-
-                        <select name="booking_roomid" class="form-select" aria-label="Default select example">
-                            <?php
-                            // get the room type from room database and show in the option 
-                            if (isset($rbook_roomid)) {
-                                $sql = "SELECT * FROM room";
-
-                                $result_room = mysqli_query($link, $sql);
-                                if (mysqli_num_rows($result_room) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result_room)) {
-                                        $room_type = $row['room_type'];
-                                        $room_id = $row['id'];
-                                        $room_status = $row['status'];
-                                        if ($rbook_roomid == $room_id) {
-                                            echo  "<option value='$room_id' selected>$room_type</option>";
-                                        } else if ($room_status == 'Free') {
-                                            echo " <option value='$room_id'>$room_type</option>";
-                                        }
-                                    }
-                                }
-                            }
-                            ?>
-                        </select>
+                        <input name="roomType" value="<?php echo $rbook_roomtype ?>" class="form-control" readonly />
                     </div>
                 </div>
                 <div class="modal-body">
@@ -96,14 +74,14 @@ include_once('../../action/booking_edit.php');
                     <div class="form-group">
                         <label>Check In</label>
                         <input type="date" name="booking_checkin" value="<?php echo $rbook_checkin ?>" class="form-control" required />
-                        <span class="help-block"><?php echo $checkIn_err; ?></span>
+
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Check Out</label>
                         <input type="date" name="booking_checkout" value="<?php echo $rbook_checkout ?>" class="form-control" required />
-                        <span class="help-block"><?php echo $checkOut_err; ?></span>
+
                     </div>
                 </div>
 

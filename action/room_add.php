@@ -2,19 +2,15 @@
 // Include config file
 include_once('../../config.php');
 
-$price_err = '';
+
 
 // Processing form data when form is submitted
 if (isset($_POST["room_type"]) && isset($_POST["bedding"]) && isset($_POST["price"])) {
 
     $room_type = $_POST["room_type"];
     $bedding = $_POST["bedding"];
+    $price = $_POST["price"];
 
-    if ($_POST["price"] >= 0) {
-        $price = $_POST["price"];
-    } else {
-        $price_err = "Invalid price. The price should be equal to or bigger than RM 0.00.";
-    }
 
     $username = 'Null';
     $status = "Free";

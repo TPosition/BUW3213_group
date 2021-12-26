@@ -14,25 +14,25 @@ include_once('../../action/booking_add.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Username</label>
-                        <input name="username" value="<?php echo $username; ?>" class="form-control" placeholder="Enter a username" required />
+                        <input name="username" class="form-control" placeholder="Enter a username" required />
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Name</label>
-                        <input name="name" value="<?php echo $name; ?>" class="form-control" placeholder="Enter a name" pattern="[A-Za-z\sa-z]{1,255}" required />
+                        <input name="name" class="form-control" placeholder="Enter a name" pattern="[A-Za-z\sa-z]{1,255}" required />
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" name="email" value="<?php echo $email; ?>" class="form-control" placeholder="Enter a email address" required />
+                        <input type="email" name="email" class="form-control" placeholder="Enter a email address" required />
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Phone</label>
-                        <input name="phone" value="<?php echo $phone; ?>" class="form-control" placeholder="Enter a phone number" pattern="[0-9]{10,11}">
+                        <input name="phone" class="form-control" placeholder="Enter a phone number" pattern="[0-9]{10,11}">
 
                     </div>
                 </div>
@@ -70,15 +70,13 @@ include_once('../../action/booking_add.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Check In</label>
-                        <input type="date" name="checkin" value="<?php echo $checkin; ?>" class="form-control" />
-                        <span class="help-block"><?php echo $checkIn_err; ?></span>
+                        <input type="date" name="checkin" class="form-control" />
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Check Out</label>
-                        <input type="date" name="checkout" value="<?php echo $checkout; ?>" class="form-control" />
-                        <span class="help-block"><?php echo $checkOut_err; ?></span>
+                        <input type="date" name="checkout" class="form-control" />
                     </div>
                 </div>
 
