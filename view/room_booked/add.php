@@ -76,7 +76,7 @@ include_once('../../action/booking_add.php');
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Check In</label>
+                        <label>Check Out</label>
                         <input type="date" name="checkout" value="<?php echo $checkout; ?>" class="form-control" />
                         <span class="help-block"><?php echo $checkOut_err; ?></span>
                     </div>

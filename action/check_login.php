@@ -23,7 +23,7 @@ if (mysqli_num_rows($result_checkout) > 0) {
 
         if ($room_checkout == $current_date || $room_checkout < $current_date) {
 
-            $sql_room_status = "UPDATE room SET status = 'Free' WHERE id =  $room_id";
+            $sql_room_status = "UPDATE room SET status = 'Free', booked_by_username = 'Null' WHERE id =  $room_id";
             mysqli_query($link, $sql_room_status);
         }
     }
